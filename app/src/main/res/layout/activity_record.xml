@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_record"
     android:layout_width="match_parent"
@@ -14,10 +15,23 @@
     android:weightSum="1">
 
     <TextView
-        android:text="TextView"
+        android:text="00:00"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
+        android:id="@+id/txtTime"
+        android:layout_weight="0.04" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        app:srcCompat="@drawable/pause"
+        android:id="@+id/imgPaused" />
+
+    <TextView
+        android:text="Paused"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtPaused"
         android:layout_weight="0.04" />
 
     <Button
@@ -25,5 +39,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/stop_pause"
+        android:layout_weight="0.04" />
+
+    <Button
+        android:text="Continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnContinue"
+        android:layout_weight="0.04" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/save"
         android:layout_weight="0.04" />
 </LinearLayout>

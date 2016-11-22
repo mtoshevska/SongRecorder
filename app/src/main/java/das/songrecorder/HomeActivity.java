@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         viewFiles.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getApplication(), ViewFilesActivity.class));
             }
         });
 
@@ -32,7 +32,8 @@ public class HomeActivity extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
+                System.exit(0);
             }
         });
     }
