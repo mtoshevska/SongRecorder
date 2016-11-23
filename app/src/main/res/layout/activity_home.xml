@@ -21,19 +21,19 @@
 
     <Button
         android:text="Start recording"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/start" />
 
     <Button
         android:text="View files"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/view" />
 
     <Button
         android:text="Exit"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/exit" />
 

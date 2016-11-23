@@ -14,11 +14,10 @@
     tools:background="@android:color/holo_blue_light"
     android:weightSum="1">
 
-    <TextView
-        android:text="00:00"
+    <Chronometer
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtTime"
+        android:id="@+id/chronometer2"
         android:layout_weight="0.04" />
 
     <ImageView
@@ -36,21 +35,21 @@
 
     <Button
         android:text="Stop/Pause"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/stop_pause"
         android:layout_weight="0.04" />
 
     <Button
         android:text="Continue"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnContinue"
         android:layout_weight="0.04" />
 
     <Button
         android:text="Save"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/save"
         android:layout_weight="0.04" />
