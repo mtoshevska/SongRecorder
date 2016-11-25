@@ -24,7 +24,6 @@ public class RecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
         recorder=new Recorder();
-        recorder.Start();
 
         final Button btnSave=(Button)this.findViewById(R.id.save);
         final Button btnContinue=(Button)this.findViewById(R.id.btnContinue);
@@ -32,16 +31,9 @@ public class RecordActivity extends AppCompatActivity {
         final ImageView imgPaused=(ImageView)this.findViewById(R.id.imgPaused);
         final Button stop_pause=(Button)this.findViewById(R.id.stop_pause);
         final Chronometer timer=(Chronometer)this.findViewById(R.id.chronometer2);
-        //TextView text1=(TextView)this.findViewById(R.id.textView);
-        //text1.setText(Environment.getDataDirectory().getAbsolutePath());
-        //File file=new File(Environment.getExternalStorageDirectory()+"/SongRecorder/");
-        //file.mkdirs();
-        //if(file.exists())
-        //{
-            //text1.setText("Postoiiiiiiiiiii");
-        //}
-
+        final Button startAgain=(Button)this.findViewById(R.id.startAgain);
         timer.start();
+        recorder.Start();
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +42,7 @@ public class RecordActivity extends AppCompatActivity {
                 btnSave.setVisibility(View.GONE);
                 pausedText.setVisibility(View.GONE);
                 imgPaused.setVisibility(View.GONE);
+                startAgain.setVisibility(View.GONE);
                 stop_pause.setVisibility(View.VISIBLE);
                 timer.setVisibility(View.VISIBLE);
                 timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
@@ -60,7 +53,25 @@ public class RecordActivity extends AppCompatActivity {
         btnContinue.setVisibility(View.GONE);
         btnSave.setVisibility(View.GONE);
         pausedText.setVisibility(View.GONE);
+        startAgain.setVisibility(View.GONE);
         imgPaused.setVisibility(View.GONE);
+
+        startAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnContinue.setVisibility(View.GONE);
+                btnSave.setVisibility(View.GONE);
+                pausedText.setVisibility(View.GONE);
+                imgPaused.setVisibility(View.GONE);
+                startAgain.setVisibility(View.GONE);
+                stop_pause.setVisibility(View.VISIBLE);
+                timer.setVisibility(View.VISIBLE);
+                startNewRecording();
+                timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+                timer.start();
+                recorder.Start();
+            }
+        });
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +87,7 @@ public class RecordActivity extends AppCompatActivity {
                 btnSave.setVisibility(View.VISIBLE);
                 pausedText.setVisibility(View.VISIBLE);
                 imgPaused.setVisibility(View.VISIBLE);
+                startAgain.setVisibility(View.VISIBLE);
                 stop_pause.setVisibility(View.GONE);
                 timer.stop();
                 stop(timer.getBase());
@@ -89,5 +101,11 @@ public class RecordActivity extends AppCompatActivity {
     {
         timeWhenStopped = t - SystemClock.elapsedRealtime();
         fileLength=(int)timeWhenStopped/1000;
+    }
+
+    public void startNewRecording()
+    {
+        timeWhenStopped=0;
+        fileLength=0;
     }
 }
