@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.IOException;
 
 public class RecordActivity extends AppCompatActivity {
 
@@ -47,6 +48,7 @@ public class RecordActivity extends AppCompatActivity {
                 timer.setVisibility(View.VISIBLE);
                 timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
                 timer.start();
+                recorder.Continue();
             }
         });
 
@@ -76,7 +78,8 @@ public class RecordActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SaveSongActivity.class));
+                recorder.Stop();
+                //startActivity(new Intent(getApplicationContext(), SaveSongActivity.class));
             }
         });
 
@@ -92,7 +95,7 @@ public class RecordActivity extends AppCompatActivity {
                 timer.stop();
                 stop(timer.getBase());
                 timer.setVisibility(View.GONE);
-                recorder.Stop();
+                recorder.Pause();
             }
         });
     }
