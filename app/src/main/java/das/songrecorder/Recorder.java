@@ -25,12 +25,23 @@ public class Recorder {
 
     public Recorder() {
         songName=Environment.getExternalStorageDirectory()+"/SongRecorder/song.3gp";
-        tmpFiles=new ArrayList<String>();
-        counter=0;
     }
 
     public void Start(){
-        Continue();
+        //Continue();
+        recorder=new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFile(songName);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_WB);
+        try{
+            recorder.prepare();
+        }
+        catch (Exception e)
+        {
+            Log.e("AudioRecord", "You cannot record");
+        }
+        recorder.start();
     }
 
     public void Stop() {
@@ -38,9 +49,6 @@ public class Recorder {
             recorder.stop();
             recorder.release();
             recorder = null;
-        }
-        if(!tmpFiles.isEmpty()) {
-            createOneFile();
         }
     }
 
@@ -67,9 +75,5 @@ public class Recorder {
         recorder.stop();
         recorder.release();
         recorder=null;
-    }
-
-    public void createOneFile() {
-
     }
 }
