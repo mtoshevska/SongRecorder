@@ -1,6 +1,7 @@
 package das.songrecorder;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,15 +11,20 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+
 public class RecordActivity extends AppCompatActivity {
 
     long timeWhenStopped;
     int fileLength;
+    Recorder recorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
+        recorder=new Recorder();
+        recorder.Start();
 
         final Button btnSave=(Button)this.findViewById(R.id.save);
         final Button btnContinue=(Button)this.findViewById(R.id.btnContinue);
@@ -26,6 +32,15 @@ public class RecordActivity extends AppCompatActivity {
         final ImageView imgPaused=(ImageView)this.findViewById(R.id.imgPaused);
         final Button stop_pause=(Button)this.findViewById(R.id.stop_pause);
         final Chronometer timer=(Chronometer)this.findViewById(R.id.chronometer2);
+        //TextView text1=(TextView)this.findViewById(R.id.textView);
+        //text1.setText(Environment.getDataDirectory().getAbsolutePath());
+        //File file=new File(Environment.getExternalStorageDirectory()+"/SongRecorder/");
+        //file.mkdirs();
+        //if(file.exists())
+        //{
+            //text1.setText("Postoiiiiiiiiiii");
+        //}
+
         timer.start();
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +80,7 @@ public class RecordActivity extends AppCompatActivity {
                 timer.stop();
                 stop(timer.getBase());
                 timer.setVisibility(View.GONE);
+                recorder.Stop();
             }
         });
     }
