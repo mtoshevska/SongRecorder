@@ -73,8 +73,10 @@ public class Recorder {
     }
 
     public void Pause(){
-        recorder.stop();
-        recorder.release();
-        recorder=null;
+        if(recorder!=null) {
+            recorder.stop();
+            recorder.release();
+            recorder = null;
+        }
     }
 }
