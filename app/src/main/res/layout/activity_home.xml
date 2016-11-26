@@ -11,6 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/backColor"
     tools:context="das.songrecorder.HomeActivity">
 
 
@@ -30,9 +31,11 @@
         tools:textStyle="bold|italic"
         android:shadowColor="@android:color/holo_blue_light"
         android:freezesText="true"
-        android:textColor="?android:attr/textColorSearchUrl"
-        tools:textColor="?android:attr/textColorLink"
-        android:id="@+id/start" />
+        android:id="@+id/start"
+        android:padding="3dp"
+        android:layout_margin="3dp"
+        android:background="@color/buttonsBackColor"
+        android:textColor="@color/buttonsTextColor"/>
 
     <Button
         android:text="View files"
@@ -44,9 +47,11 @@
         tools:textStyle="bold|italic"
         android:shadowColor="@android:color/holo_blue_light"
         android:freezesText="true"
-        android:textColor="?android:attr/textColorSearchUrl"
-        tools:textColor="?android:attr/textColorLink"
-        android:id="@+id/view" />
+        android:id="@+id/view"
+        android:padding="3dp"
+        android:layout_margin="3dp"
+        android:background="@color/buttonsBackColor"
+        android:textColor="@color/buttonsTextColor" />
 
     <Button
         android:text="Exit"
@@ -58,9 +63,11 @@
         tools:textStyle="bold|italic"
         android:shadowColor="@android:color/holo_blue_light"
         android:freezesText="true"
-        android:textColor="?android:attr/textColorSearchUrl"
-        tools:textColor="?android:attr/textColorLink"
-        android:id="@+id/exit" />
+        android:id="@+id/exit"
+        android:padding="3dp"
+        android:layout_margin="3dp"
+        android:background="@color/buttonsBackColor"
+        android:textColor="@color/buttonsTextColor" />
 
 
 </LinearLayout>
