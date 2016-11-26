@@ -1,5 +1,6 @@
 package das.songrecorder;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +31,9 @@ public class SaveSongActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String title=songTitle.getText().toString();
-                saveSong(title);
+                if(title!="") {
+                    saveSong(title);
+                }
             }
         });
     }
@@ -41,5 +44,6 @@ public class SaveSongActivity extends AppCompatActivity {
         song.renameTo(new File(location+"/"+title+".3gp"));
         Information info=new Information(song);
         info.fill();
+        Toast.makeText(getApplicationContext(),"Song saved!", Toast.LENGTH_LONG).show();
     }
 }
