@@ -31,6 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtPaused"
+        android:textAllCaps="false"
+        android:soundEffectsEnabled="true"
+        android:textSize="18sp"
+        tools:textStyle="bold|italic"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:freezesText="true"
+        android:textColor="?android:attr/textColorSearchUrl"
+        tools:textColor="?android:attr/textColorLink"
         android:layout_weight="0.04" />
 
     <Button
@@ -38,6 +46,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/stop_pause"
+        android:textAllCaps="false"
+        android:soundEffectsEnabled="true"
+        android:textSize="18sp"
+        tools:textStyle="bold|italic"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:freezesText="true"
+        android:textColor="?android:attr/textColorSearchUrl"
+        tools:textColor="?android:attr/textColorLink"
         android:layout_weight="0.04" />
 
     <Button
@@ -45,6 +61,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnContinue"
+        android:textAllCaps="false"
+        android:soundEffectsEnabled="true"
+        android:textSize="18sp"
+        tools:textStyle="bold|italic"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:freezesText="true"
+        android:textColor="?android:attr/textColorSearchUrl"
+        tools:textColor="?android:attr/textColorLink"
         android:layout_weight="0.04" />
 
     <Button
@@ -52,6 +76,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/startAgain"
+        android:textAllCaps="false"
+        android:soundEffectsEnabled="true"
+        android:textSize="18sp"
+        tools:textStyle="bold|italic"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:freezesText="true"
+        android:textColor="?android:attr/textColorSearchUrl"
+        tools:textColor="?android:attr/textColorLink"
         android:layout_weight="0.04" />
 
     <Button
@@ -59,6 +91,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/save"
+        android:textAllCaps="false"
+        android:soundEffectsEnabled="true"
+        android:textSize="18sp"
+        tools:textStyle="bold|italic"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:freezesText="true"
+        android:textColor="?android:attr/textColorSearchUrl"
+        tools:textColor="?android:attr/textColorLink"
         android:layout_weight="0.04" />
 
 </LinearLayout>

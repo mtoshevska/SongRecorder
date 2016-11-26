@@ -24,18 +24,42 @@
         android:text="Start recording"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:soundEffectsEnabled="true"
+        android:textSize="18sp"
+        tools:textStyle="bold|italic"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:freezesText="true"
+        android:textColor="?android:attr/textColorSearchUrl"
+        tools:textColor="?android:attr/textColorLink"
         android:id="@+id/start" />
 
     <Button
         android:text="View files"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:soundEffectsEnabled="true"
+        android:textSize="18sp"
+        tools:textStyle="bold|italic"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:freezesText="true"
+        android:textColor="?android:attr/textColorSearchUrl"
+        tools:textColor="?android:attr/textColorLink"
         android:id="@+id/view" />
 
     <Button
         android:text="Exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:soundEffectsEnabled="true"
+        android:textSize="18sp"
+        tools:textStyle="bold|italic"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:freezesText="true"
+        android:textColor="?android:attr/textColorSearchUrl"
+        tools:textColor="?android:attr/textColorLink"
         android:id="@+id/exit" />
 
 
