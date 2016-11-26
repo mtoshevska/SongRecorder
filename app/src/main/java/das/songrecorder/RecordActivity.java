@@ -78,8 +78,10 @@ public class RecordActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recorder.Stop();
-                //startActivity(new Intent(getApplicationContext(), SaveSongActivity.class));
+                File song=recorder.Stop();
+                Intent intent=new Intent(getApplicationContext(), SaveSongActivity.class);
+                intent.putExtra("Song", song);
+                startActivity(intent);
             }
         });
 

@@ -44,12 +44,13 @@ public class Recorder {
         recorder.start();
     }
 
-    public void Stop() {
+    public File Stop() {
         if(recorder!=null) {
             recorder.stop();
             recorder.release();
             recorder = null;
         }
+        return new File(songName);
     }
 
     public void Continue(){

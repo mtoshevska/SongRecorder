@@ -5,8 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class SaveSongActivity extends AppCompatActivity {
+
+    File song=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,13 +19,27 @@ public class SaveSongActivity extends AppCompatActivity {
         setContentView(R.layout.activity_save_song);
 
         Button btnSave=(Button)this.findViewById(R.id.btnSaveSong);
-        EditText songTitle=(EditText)this.findViewById(R.id.title);
+        final EditText songTitle=(EditText)this.findViewById(R.id.title);
+
+        Bundle extras=getIntent().getExtras();
+        if(extras!=null){
+            song=(File)extras.get("Song");
+        }
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String title=songTitle.getText().toString();
+                saveSong(title);
             }
         });
+    }
+
+    public void saveSong(String title)
+    {
+        String location=song.getParentFile().getAbsolutePath();
+        song.renameTo(new File(location+"/"+title+".3gp"));
+        Information info=new Information(song);
+        info.fill();
     }
 }
