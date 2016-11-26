@@ -39,15 +39,15 @@ public class RecordActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //btnContinue.setVisibility(View.GONE);
-                //btnSave.setVisibility(View.GONE);
-                //pausedText.setVisibility(View.GONE);
-                //imgPaused.setVisibility(View.GONE);
-                //startAgain.setVisibility(View.GONE);
-                //stop_pause.setVisibility(View.VISIBLE);
-                //timer.setVisibility(View.VISIBLE);
-                //timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-                //timer.start();
+                btnContinue.setVisibility(View.GONE);
+                btnSave.setVisibility(View.GONE);
+                pausedText.setVisibility(View.GONE);
+                imgPaused.setVisibility(View.GONE);
+                startAgain.setVisibility(View.GONE);
+                stop_pause.setVisibility(View.VISIBLE);
+                timer.setVisibility(View.VISIBLE);
+                timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+                timer.start();
                 //recorder.Continue();
             }
         });

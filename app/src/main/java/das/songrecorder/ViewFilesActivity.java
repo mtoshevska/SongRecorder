@@ -13,10 +13,9 @@ public class ViewFilesActivity extends AppCompatActivity {
 
         ListView songList=(ListView)this.findViewById(R.id.songsList);
         SongAdapter adapter=new SongAdapter(getApplicationContext());
-        songList.setAdapter(adapter);
-
-        Song tmp=new Song("Name","Author","Artist",100);
-        adapter.addSong(tmp);
+        SongsGetter songsGetter=new SongsGetter();
+        songsGetter.getSongs(adapter);
         adapter.notifyDataSetChanged();
+        songList.setAdapter(adapter);
     }
 }
