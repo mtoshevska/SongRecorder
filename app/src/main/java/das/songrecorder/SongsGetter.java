@@ -25,7 +25,7 @@ public class SongsGetter {
             String artist="Artist"+counter;
             int duration=counter*10+21;
             counter++;
-            Song song=new Song(title,author,artist,duration);
+            Song song=new Song(title,author,artist,duration,f.getAbsolutePath());
             adapter.addSong(song);
         }
     }

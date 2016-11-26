@@ -1,5 +1,6 @@
 package das.songrecorder;
 
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class SaveSongActivity extends AppCompatActivity {
                 if(title!="") {
                     saveSong(title);
                 }
+                startActivity(new Intent(getApplication(),HomeActivity.class));
             }
         });
     }

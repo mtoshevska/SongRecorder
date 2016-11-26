@@ -1,14 +1,19 @@
 package das.songrecorder;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -46,7 +51,7 @@ public class SongAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if(convertView==null)
         {
             LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -55,7 +60,7 @@ public class SongAdapter extends BaseAdapter {
         TextView title=(TextView)convertView.findViewById(R.id.name_artist);
         TextView author=(TextView)convertView.findViewById(R.id.author);
         TextView duration=(TextView)convertView.findViewById(R.id.duration);
-        ImageView image=(ImageView)convertView.findViewById(R.id.imageView4);
+        ImageButton image=(ImageButton) convertView.findViewById(R.id.imageView4);
         Song s=songs.get(position);
         String t1=context.getResources().getString(R.string.nameAndArtist);
         String t2=TextUtils.htmlEncode(t1);
@@ -70,6 +75,19 @@ public class SongAdapter extends BaseAdapter {
         t3=String.format(t2, s.getDuration());
         duration.setText(t3);
         image.setImageResource(R.drawable.play);
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Song tmpSong=songs.get(position);
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                File file=new File(tmpSong.getLocation());
+                intent.setDataAndType(Uri.fromFile(file),"audio/*");
+                if (intent.resolveActivity(context.getPackageManager()) != null) {
+                    context.startActivity(intent);
+                }
+            }
+        });
         return convertView;
     }
 }
