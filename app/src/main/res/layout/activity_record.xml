@@ -19,7 +19,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/chronometer2"
-        android:layout_weight="0.04" />
+        android:layout_weight="0.23"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="24sp"
+        tools:textStyle="bold"
+        tools:textAlignment="center" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -35,13 +39,15 @@
         android:textAllCaps="false"
         android:soundEffectsEnabled="true"
         android:textSize="18sp"
-        tools:textStyle="bold|italic"
+        tools:textStyle="bold"
         android:shadowColor="@android:color/holo_blue_light"
         android:freezesText="true"
-        android:layout_weight="0.04" />
+        android:layout_weight="0.25"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorHint" />
 
     <Button
-        android:text="Stop/Pause"
+        android:text="Stop / Pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/stop_pause"

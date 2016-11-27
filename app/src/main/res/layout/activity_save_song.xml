@@ -18,7 +18,10 @@
         android:text="Write Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtWriteTitle" />
+        android:id="@+id/txtWriteTitle"
+        android:background="@android:color/background_light"
+        android:autoText="true"
+        android:textSize="18sp" />
 
     <EditText
         android:layout_width="match_parent"
