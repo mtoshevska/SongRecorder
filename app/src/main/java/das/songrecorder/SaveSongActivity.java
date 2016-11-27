@@ -32,20 +32,29 @@ public class SaveSongActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String title=songTitle.getText().toString();
-                if(title!="") {
+                if(title.compareTo("")!=0) {
+                    fillInfo(title);
                     saveSong(title);
+                    Toast.makeText(getApplicationContext(),"Song saved!", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                 }
-                startActivity(new Intent(getApplication(),HomeActivity.class));
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Please type song name",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
 
-    public void saveSong(String title)
+    public void fillInfo(String title)
     {
-        String location=song.getParentFile().getAbsolutePath();
-        song.renameTo(new File(location+"/"+title+".3gp"));
         Information info=new Information(song);
         info.fill();
-        Toast.makeText(getApplicationContext(),"Song saved!", Toast.LENGTH_LONG).show();
+    }
+
+    public void saveSong(String title)
+    {
+        Saver saver=new Saver(song);
+        saver.save(title);
     }
 }

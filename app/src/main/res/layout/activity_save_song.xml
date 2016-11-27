@@ -16,10 +16,12 @@
 
     <TextView
         android:text="Write Title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:id="@+id/txtWriteTitle"
-        android:background="@android:color/background_light"
+        android:textColor="@color/buttonsTextColor"
+        android:background="@color/backColor"
         android:autoText="true"
         android:textSize="18sp" />
 

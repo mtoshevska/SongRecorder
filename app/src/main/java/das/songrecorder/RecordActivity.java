@@ -78,10 +78,7 @@ public class RecordActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File song=recorder.Stop();
-                Intent intent=new Intent(getApplicationContext(), SaveSongActivity.class);
-                intent.putExtra("Song", song);
-                startActivity(intent);
+                fillSongInformation();
             }
         });
 
@@ -106,6 +103,14 @@ public class RecordActivity extends AppCompatActivity {
     {
         timeWhenStopped = t - SystemClock.elapsedRealtime();
         fileLength=(int)timeWhenStopped/1000;
+    }
+
+    public void fillSongInformation()
+    {
+        File song=recorder.Stop();
+        Intent intent=new Intent(getApplicationContext(), SaveSongActivity.class);
+        intent.putExtra("Song", song);
+        startActivity(intent);
     }
 
     public void startNewRecording()
