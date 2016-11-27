@@ -1,1 +1,1 @@
-# SongRecorder - Software architecure and design project
+# SongRecorder - Software architecture and design project
