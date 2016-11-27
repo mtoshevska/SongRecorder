@@ -21,11 +21,12 @@ public class SongsGetter {
         int counter=0;
         for(File f:files){
             String title=f.getName();
+            String title1=title.substring(0, title.lastIndexOf('.'));
             String author="Author"+counter;
             String artist="Artist"+counter;
             int duration=counter*10+21;
             counter++;
-            Song song=new Song(title,author,artist,duration,f.getAbsolutePath());
+            Song song=new Song(title1,author,artist,duration,f.getAbsolutePath());
             adapter.addSong(song);
         }
     }
