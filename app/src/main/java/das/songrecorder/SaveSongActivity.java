@@ -1,5 +1,6 @@
 package das.songrecorder;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,12 +32,31 @@ public class SaveSongActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title=songTitle.getText().toString();
+                final String title=songTitle.getText().toString();
                 if(title.compareTo("")!=0) {
-                    fillInfo(title);
-                    saveSong(title);
-                    Toast.makeText(getApplicationContext(),"Song saved!", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                    final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(SaveSongActivity.this);
+                    builder.setMessage("Save song?");
+                    builder.setCancelable(false);
+                    builder.setPositiveButton(
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    fillInfo();
+                                    saveSong(title);
+                                    Toast.makeText(getApplicationContext(),"Song saved!", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                                }
+                            });
+                    builder.setNegativeButton(
+                            "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    discardSong();
+                                    Toast.makeText(getApplicationContext(),"Song discarded", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                                }
+                            });
+                    builder.show();
                 }
                 else
                 {
@@ -46,7 +66,13 @@ public class SaveSongActivity extends AppCompatActivity {
         });
     }
 
-    public void fillInfo(String title)
+    public void discardSong()
+    {
+        Saver saver=new Saver(song);
+        saver.discard();
+    }
+
+    public void fillInfo()
     {
         Information info=new Information(song);
         info.fill();

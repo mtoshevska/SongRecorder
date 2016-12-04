@@ -17,4 +17,9 @@ public class Saver {
         String location=song.getParentFile().getAbsolutePath();
         song.renameTo(new File(location+"/"+title+".3gp"));
     }
+
+    public void discard(){
+        String location=song.getParentFile().getAbsolutePath();
+        song.delete();
+    }
 }
