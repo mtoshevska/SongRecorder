@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:id="@+id/imageView4"
+        android:id="@+id/playButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginRight="3dp"
@@ -22,7 +22,7 @@
         android:id="@+id/name_artist"
         android:textColor="@color/buttonsTextColor"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:layout_toEndOf="@+id/playButton" />
 
     <TextView
         android:text="TextView"
@@ -31,7 +31,7 @@
         android:id="@+id/author"
         android:textColor="@color/buttonsTextColor"
         android:layout_below="@+id/name_artist"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:layout_toEndOf="@+id/playButton" />
 
     <TextView
         android:text="TextView"
@@ -40,6 +40,15 @@
         android:textColor="@color/buttonsTextColor"
         android:id="@+id/duration"
         android:layout_below="@+id/author"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:layout_toEndOf="@+id/playButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/delete"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/buttonsBackColor"
+        android:id="@+id/deleteButton" />
 
 </RelativeLayout>

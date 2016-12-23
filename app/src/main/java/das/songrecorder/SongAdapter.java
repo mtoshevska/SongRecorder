@@ -60,7 +60,8 @@ public class SongAdapter extends BaseAdapter {
         TextView title=(TextView)convertView.findViewById(R.id.name_artist);
         TextView author=(TextView)convertView.findViewById(R.id.author);
         TextView duration=(TextView)convertView.findViewById(R.id.duration);
-        ImageButton image=(ImageButton) convertView.findViewById(R.id.imageView4);
+        ImageButton playButton=(ImageButton)convertView.findViewById(R.id.playButton);
+        ImageButton deleteButton=(ImageButton)convertView.findViewById(R.id.deleteButton);
         Song s=songs.get(position);
         String t1=context.getResources().getString(R.string.nameAndArtist);
         String t2=TextUtils.htmlEncode(t1);
@@ -74,14 +75,33 @@ public class SongAdapter extends BaseAdapter {
         t2=TextUtils.htmlEncode(t1);
         t3=String.format(t2, s.getDuration());
         duration.setText(t3);
-        image.setImageResource(R.drawable.play);
-        image.setOnClickListener(new View.OnClickListener() {
+        playButton.setImageResource(R.drawable.play);
+        playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Player player=Player.getInstance();
-                player.playSong(new File(songs.get(position).getLocation()), context);
+                Play(new File(songs.get(position).getLocation()));
+            }
+        });
+        deleteButton.setImageResource(R.drawable.delete);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File f=new File(songs.get(position).getLocation());
+                songs.remove(position);
+                Delete(f);
             }
         });
         return convertView;
+    }
+
+    public void Play(File f){
+        Player player=Player.getInstance();
+        player.playSong(f, context);
+    }
+
+    public void Delete(File f){
+        Saver saver=Saver.getInstance();
+        saver.discard(f);
+        this.notifyDataSetChanged();
     }
 }

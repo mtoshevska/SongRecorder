@@ -66,21 +66,18 @@ public class SaveSongActivity extends AppCompatActivity {
         });
     }
 
-    public void discardSong()
-    {
-        Saver saver=new Saver(song);
-        saver.discard();
+    public void discardSong(){
+        Saver saver=Saver.getInstance();
+        saver.discard(song);
     }
 
-    public void fillInfo()
-    {
+    public void fillInfo(){
         Information info=Information.getInstance();
         info.fill(song);
     }
 
-    public void saveSong(String title)
-    {
-        Saver saver=new Saver(song);
-        saver.save(title);
+    public void saveSong(String title){
+        Saver saver=Saver.getInstance();
+        saver.save(title,song);
     }
 }

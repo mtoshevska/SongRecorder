@@ -7,18 +7,27 @@ import java.io.File;
  */
 
 public class Saver {
-    private File song;
+    private static Saver instance;
 
-    public Saver(File f){
-        song=f;
+    private Saver(){
+
     }
 
-    public void save(String title){
+    public static Saver getInstance(){
+        synchronized (Saver.class){
+            if(instance==null){
+                instance=new Saver();
+            }
+        }
+        return instance;
+    }
+
+    public void save(String title, File song){
         String location=song.getParentFile().getAbsolutePath();
         song.renameTo(new File(location+"/"+title+".3gp"));
     }
 
-    public void discard(){
+    public void discard(File song){
         String location=song.getParentFile().getAbsolutePath();
         song.delete();
     }
