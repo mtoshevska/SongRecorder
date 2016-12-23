@@ -74,8 +74,8 @@ public class SaveSongActivity extends AppCompatActivity {
 
     public void fillInfo()
     {
-        Information info=new Information(song);
-        info.fill();
+        Information info=Information.getInstance();
+        info.fill(song);
     }
 
     public void saveSong(String title)

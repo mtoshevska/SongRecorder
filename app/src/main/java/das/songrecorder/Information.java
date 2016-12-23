@@ -8,13 +8,22 @@ import java.io.File;
 
 public class Information {
 
-    private File song;
+    private static Information instance;
 
-    public Information(File s) {
-        song = s;
+    private Information() {
+
     }
 
-    public void fill() {
+    public static Information getInstance(){
+        synchronized (Information.class){
+            if(instance==null){
+                instance=new Information();
+            }
+        }
+        return instance;
+    }
+
+    public void fill(File song) {
         getDataFromDatabase(song.getName());
     }
 

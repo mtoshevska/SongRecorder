@@ -3,4 +3,5 @@
     <string name="nameAndArtist">%1$s - %2$s</string>
     <string name="writtenBy">Written by %1$s</string>
     <string name="duration">Duration: %1$d seconds</string>
+    <string name="songTitle1">Write song title</string>
 </resources>

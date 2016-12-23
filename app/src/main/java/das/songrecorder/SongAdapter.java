@@ -31,8 +31,8 @@ public class SongAdapter extends BaseAdapter {
         songs=new ArrayList<Song>();
     }
 
-    public void addSong(Song s){
-        songs.add(s);
+    public void addSongs(ArrayList<Song>s){
+        songs.addAll(s);
     }
 
     @Override
@@ -78,14 +78,8 @@ public class SongAdapter extends BaseAdapter {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Song tmpSong=songs.get(position);
-                Intent intent=new Intent(Intent.ACTION_VIEW);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                File file=new File(tmpSong.getLocation());
-                intent.setDataAndType(Uri.fromFile(file),"audio/*");
-                if (intent.resolveActivity(context.getPackageManager()) != null) {
-                    context.startActivity(intent);
-                }
+                Player player=Player.getInstance();
+                player.playSong(new File(songs.get(position).getLocation()), context);
             }
         });
         return convertView;

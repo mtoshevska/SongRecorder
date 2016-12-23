@@ -24,7 +24,7 @@ public class RecordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
-        recorder=new Recorder();
+        recorder=Recorder.getInstance();
 
         final Button btnSave=(Button)this.findViewById(R.id.save);
         final Button btnContinue=(Button)this.findViewById(R.id.btnContinue);
@@ -71,7 +71,7 @@ public class RecordActivity extends AppCompatActivity {
                 startNewRecording();
                 timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
                 timer.start();
-                recorder.Start();
+                //recorder.Start();
             }
         });
 
@@ -94,28 +94,27 @@ public class RecordActivity extends AppCompatActivity {
                 timer.stop();
                 stop(timer.getBase());
                 timer.setVisibility(View.GONE);
-                recorder.Pause();
+                //recorder.Pause();
             }
         });
     }
 
-    public void stop(long t)
-    {
+    public void stop(long t){
         timeWhenStopped = t - SystemClock.elapsedRealtime();
         fileLength=(int)timeWhenStopped/1000;
+        recorder.Pause();
     }
 
-    public void fillSongInformation()
-    {
+    public void fillSongInformation(){
         File song=recorder.Stop();
         Intent intent=new Intent(getApplicationContext(), SaveSongActivity.class);
         intent.putExtra("Song", song);
         startActivity(intent);
     }
 
-    public void startNewRecording()
-    {
+    public void startNewRecording(){
         timeWhenStopped=0;
         fileLength=0;
+        recorder.Start();
     }
 }

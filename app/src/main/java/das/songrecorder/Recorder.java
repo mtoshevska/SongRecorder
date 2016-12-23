@@ -19,12 +19,22 @@ import java.util.List;
 public class Recorder {
 
     private MediaRecorder recorder;
-    private String songName;
+    private static String songName=Environment.getExternalStorageDirectory()+"/SongRecorder/song.3gp";
     private ArrayList<String>tmpFiles;
     private int counter;
+    private static Recorder instance;
 
-    public Recorder() {
-        songName=Environment.getExternalStorageDirectory()+"/SongRecorder/song.3gp";
+    private Recorder() {
+
+    }
+
+    public static Recorder getInstance(){
+        synchronized (Recorder.class){
+            if(instance==null){
+                instance=new Recorder();
+            }
+        }
+        return instance;
     }
 
     public void Start(){
