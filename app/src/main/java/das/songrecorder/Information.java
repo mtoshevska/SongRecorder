@@ -23,11 +23,14 @@ public class Information {
         return instance;
     }
 
-    public void fill(File song) {
-        getDataFromDatabase(song.getName());
+    public Song fill(File songFile,String title) {
+        Song song=new Song();
+        song.setName(title);
+        song.setLocation(songFile.getAbsolutePath());
+        return getDataFromDatabase(song);
     }
 
-    public void getDataFromDatabase(String title) {
-
+    private Song getDataFromDatabase(Song f) {
+        return f;
     }
 }

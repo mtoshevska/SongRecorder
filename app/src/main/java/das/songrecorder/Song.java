@@ -1,5 +1,6 @@
 package das.songrecorder;
 
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -13,12 +14,30 @@ public class Song {
     private String artist;
     private int duration;
     private String location;
+    private String genre;
+    private int year;
+    private String dateRecorded;
 
-    public Song(String n, String au, String ar, int d, String l){
+    public Song(){
+
+    }
+
+    public Song(String n, String au, String ar, int d, String l, String g, int y, String date){
         name=n;
         author=au;
         artist=ar;
         duration=d;
+        location=l;
+        genre=g;
+        year=y;
+        dateRecorded=date;
+    }
+
+    public void setName(String n){
+        name=n;
+    }
+
+    public void setLocation(String l){
         location=l;
     }
 

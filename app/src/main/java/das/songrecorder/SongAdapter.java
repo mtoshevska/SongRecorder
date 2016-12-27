@@ -86,7 +86,7 @@ public class SongAdapter extends BaseAdapter {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File f=new File(songs.get(position).getLocation());
+                Song f=songs.get(position);
                 songs.remove(position);
                 Delete(f);
             }
@@ -99,7 +99,7 @@ public class SongAdapter extends BaseAdapter {
         player.playSong(f, context);
     }
 
-    public void Delete(File f){
+    public void Delete(Song f){
         Saver saver=Saver.getInstance();
         saver.discard(f);
         this.notifyDataSetChanged();

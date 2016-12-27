@@ -22,13 +22,14 @@ public class Saver {
         return instance;
     }
 
-    public void save(String title, File song){
-        String location=song.getParentFile().getAbsolutePath();
-        song.renameTo(new File(location+"/"+title+".3gp"));
+    public void save(Song song){
+        String location=song.getLocation();
+        File songFile=new File(location);
+        songFile.renameTo(new File(songFile.getParentFile().getAbsolutePath()+"/"+song.getName()+".3gp"));
     }
 
-    public void discard(File song){
-        String location=song.getParentFile().getAbsolutePath();
-        song.delete();
+    public void discard(Song song){
+        File forDelete=new File(song.getLocation());
+        forDelete.delete();
     }
 }

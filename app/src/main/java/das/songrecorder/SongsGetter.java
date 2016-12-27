@@ -36,9 +36,10 @@ public class SongsGetter {
             String title1=title.substring(0, title.lastIndexOf('.'));
             String author="Author"+counter;
             String artist="Artist"+counter;
+            String genre="Genre"+counter;
             int duration=counter*10+21;
             counter++;
-            Song song=new Song(title1,author,artist,duration,f.getAbsolutePath());
+            Song song=new Song(title1,author,artist,duration,f.getAbsolutePath(),genre,2016,"27.12.2016");
             songs.add(song);
         }
         return songs;
