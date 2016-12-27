@@ -41,6 +41,10 @@ public class Song {
         location=l;
     }
 
+    public void setDateRecorded(String d){
+        dateRecorded=d;
+    }
+
     public String getName(){
         return name;
     }

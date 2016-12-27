@@ -1,6 +1,8 @@
 package das.songrecorder;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by Toni on 25.11.2016.
@@ -27,6 +29,10 @@ public class Information {
         Song song=new Song();
         song.setName(title);
         song.setLocation(songFile.getAbsolutePath());
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        String formattedDate = df.format(c.getTime());
+        song.setDateRecorded(formattedDate);
         return getDataFromDatabase(song);
     }
 
