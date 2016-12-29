@@ -45,6 +45,26 @@ public class Song {
         dateRecorded=d;
     }
 
+    public void setAuthor(String a){
+        author=a;
+    }
+
+    public void setArtist(String a){
+        artist=a;
+    }
+
+    public void setDuration(int d){
+        duration=d;
+    }
+
+    public void setGenre(String g){
+        genre=g;
+    }
+
+    public void setYear(int y){
+        year=y;
+    }
+
     public String getName(){
         return name;
     }
@@ -63,5 +83,17 @@ public class Song {
 
     public String getLocation(){
         return location;
+    }
+
+    public String getGenre(){
+        return genre;
+    }
+
+    public int getYear(){
+        return year;
+    }
+
+    public String getDateRecorded(){
+        return dateRecorded;
     }
 }

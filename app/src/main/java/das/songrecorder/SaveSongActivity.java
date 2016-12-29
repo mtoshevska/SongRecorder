@@ -79,6 +79,6 @@ public class SaveSongActivity extends AppCompatActivity {
 
     public void saveSong(String title){
         Saver saver=Saver.getInstance();
-        saver.save(song);
+        saver.save(song,getApplicationContext());
     }
 }
