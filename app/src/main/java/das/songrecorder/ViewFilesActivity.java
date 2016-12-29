@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
+import java.io.File;
+
 public class ViewFilesActivity extends AppCompatActivity {
 
     SongAdapter adapter;
@@ -35,17 +37,31 @@ public class ViewFilesActivity extends AppCompatActivity {
                 null                                 // The sort order
         );
         Log.d("ViewFilesActivity",c.getCount()+"");
+        String forDelete[]=new String[4];
+        int k=0;
         for(int i=0;i<c.getCount();i++)
         {
             c.moveToPosition(i);
+            String loc=c.getString(4);
             Log.d("ViewFilesActivity",c.getString(0));
             Log.d("ViewFilesActivity",c.getString(1));
             Log.d("ViewFilesActivity",c.getString(2));
             Log.d("ViewFilesActivity",c.getInt(3)+"");
-            Log.d("ViewFilesActivity",c.getString(4));
+            Log.d("ViewFilesActivity",loc);
             Log.d("ViewFilesActivity",c.getString(5));
             Log.d("ViewFilesActivity",c.getInt(6)+"");
             Log.d("ViewFilesActivity",c.getString(7));
+            File f=new File(loc);
+            if(!f.exists()){
+                Log.d("ViewFilesActivity","Not exists");
+                forDelete[k]=loc;
+                k++;
+            }
+        }
+        db=dbHelper.getWritableDatabase();
+        for(int m=0;m<k;m++){
+            Log.d("ViewFilesActivity",forDelete[m]);
+            db.delete(SongDBEntry.TABLE_NAME,SongDBEntry.COLUMN_LOCATION+"='"+forDelete[m]+"'",null);
         }*/
 
 

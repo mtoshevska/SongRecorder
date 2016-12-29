@@ -109,7 +109,7 @@ public class RecordActivity extends AppCompatActivity {
         Song song=recorder.Stop();
         song.setDuration(fileLength);
         Intent intent=new Intent(getApplicationContext(),SaveSongActivity.class);
-        intent.putExtra("Song",song);   
+        intent.putExtra("Song",song);
         startActivity(intent);
     }
 

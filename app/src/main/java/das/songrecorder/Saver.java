@@ -50,8 +50,18 @@ public class Saver {
         Log.d("Saver","Song Saved");
     }
 
-    public void discard(Song song){
-        File forDelete=new File(song.getLocation());
+    public void discard(Song song,Context context){
+        String location=song.getLocation();
+        File forDelete=new File(location);
         forDelete.delete();
+        //delete from sqlite
+        SongsDBHelper dbHelper=new SongsDBHelper(context);
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        try {
+            db.delete(SongDBEntry.TABLE_NAME, SongDBEntry.COLUMN_LOCATION + "='" + location + "'", null);
+        }
+        catch (Exception e){
+            Log.d("Saver",e.getMessage());
+        }
     }
 }

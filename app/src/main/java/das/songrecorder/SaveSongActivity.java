@@ -72,7 +72,7 @@ public class SaveSongActivity extends AppCompatActivity {
     }
 
     public void discardSong(){
-        saver.discard(song);
+        saver.discard(song,getApplicationContext());
     }
 
     public void fillInfo(String title){

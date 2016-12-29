@@ -99,11 +99,11 @@ public class SongAdapter extends BaseAdapter {
     }
 
     public void Play(File f){
-        player.playSong(f, context);
+        player.playSong(f,context);
     }
 
     public void Delete(Song f){
-        saver.discard(f);
+        saver.discard(f,context);
         this.notifyDataSetChanged();
     }
 }
