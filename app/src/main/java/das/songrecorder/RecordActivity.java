@@ -106,10 +106,10 @@ public class RecordActivity extends AppCompatActivity {
     }
 
     public void fillSongInformation(){
-        File song=recorder.Stop();
+        Song song=recorder.Stop();
+        song.setDuration(fileLength);
         Intent intent=new Intent(getApplicationContext(),SaveSongActivity.class);
-        intent.putExtra("Song",song);
-        intent.putExtra("Duration",fileLength);
+        intent.putExtra("Song",song);   
         startActivity(intent);
     }
 

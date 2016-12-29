@@ -14,11 +14,9 @@ import java.io.File;
 
 public class SaveSongActivity extends AppCompatActivity {
 
-    File songFile=null;
     Song song=null;
     Saver saver;
     Information info;
-    int duration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +28,7 @@ public class SaveSongActivity extends AppCompatActivity {
 
         Bundle extras=getIntent().getExtras();
         if(extras!=null){
-            songFile=(File)extras.get("Song");
-            duration=(int)extras.get("Duration");
+            song=(Song)extras.get("Song");
         }
 
         saver=Saver.getInstance();
@@ -79,7 +76,7 @@ public class SaveSongActivity extends AppCompatActivity {
     }
 
     public void fillInfo(String title){
-        song=info.fill(songFile,title,duration);
+        song=info.fill(song,title);
     }
 
     public void saveSong(){

@@ -26,11 +26,8 @@ public class Information {
         return instance;
     }
 
-    public Song fill(File songFile,String title,int d) {
-        Song song=new Song();
+    public Song fill(Song song,String title) {
         song.setName(title);
-        song.setLocation(songFile.getAbsolutePath());
-        song.setDuration(d);
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String formattedDate = df.format(c.getTime());

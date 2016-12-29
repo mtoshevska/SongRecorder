@@ -24,11 +24,15 @@ public class SongAdapter extends BaseAdapter {
 
     private ArrayList<Song> songs;
     private Context context;
+    private Player player;
+    private Saver saver;
 
     public SongAdapter(Context c){
         super();
         context=c;
         songs=new ArrayList<Song>();
+        player=Player.getInstance();
+        saver=Saver.getInstance();
     }
 
     public void addSongs(ArrayList<Song>s){
@@ -95,12 +99,10 @@ public class SongAdapter extends BaseAdapter {
     }
 
     public void Play(File f){
-        Player player=Player.getInstance();
         player.playSong(f, context);
     }
 
     public void Delete(Song f){
-        Saver saver=Saver.getInstance();
         saver.discard(f);
         this.notifyDataSetChanged();
     }

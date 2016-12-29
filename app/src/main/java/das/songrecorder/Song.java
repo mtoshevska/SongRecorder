@@ -1,5 +1,8 @@
 package das.songrecorder;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 import java.util.Locale;
 
@@ -7,7 +10,7 @@ import java.util.Locale;
  * Created by Toni on 26.11.2016.
  */
 
-public class Song {
+public class Song implements Parcelable {
 
     private String name;
     private String author;
@@ -32,6 +35,29 @@ public class Song {
         year=y;
         dateRecorded=date;
     }
+
+    protected Song(Parcel in) {
+        name=in.readString();
+        author=in.readString();
+        artist=in.readString();
+        duration=in.readInt();
+        location=in.readString();
+        genre=in.readString();
+        year=in.readInt();
+        dateRecorded=in.readString();
+    }
+
+    public static final Creator<Song> CREATOR = new Creator<Song>() {
+        @Override
+        public Song createFromParcel(Parcel in) {
+            return new Song(in);
+        }
+
+        @Override
+        public Song[] newArray(int size) {
+            return new Song[size];
+        }
+    };
 
     public void setName(String n){
         name=n;
@@ -95,5 +121,22 @@ public class Song {
 
     public String getDateRecorded(){
         return dateRecorded;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(author);
+        dest.writeString(artist);
+        dest.writeInt(duration);
+        dest.writeString(location);
+        dest.writeString(genre);
+        dest.writeInt(year);
+        dest.writeString(dateRecorded);
     }
 }

@@ -54,13 +54,16 @@ public class Recorder {
         recorder.start();
     }
 
-    public File Stop() {
+    public Song Stop() {
         if(recorder!=null) {
             recorder.stop();
             recorder.release();
             recorder = null;
         }
-        return new File(songName);
+        Song song=new Song();
+        song.setLocation(songName);
+        //return new File(songName);
+        return song;
     }
 
     public void Continue(){
