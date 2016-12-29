@@ -100,15 +100,16 @@ public class RecordActivity extends AppCompatActivity {
     }
 
     public void stop(long t){
-        timeWhenStopped = t - SystemClock.elapsedRealtime();
+        timeWhenStopped=SystemClock.elapsedRealtime()-t;
         fileLength=(int)timeWhenStopped/1000;
         recorder.Pause();
     }
 
     public void fillSongInformation(){
         File song=recorder.Stop();
-        Intent intent=new Intent(getApplicationContext(), SaveSongActivity.class);
-        intent.putExtra("Song", song);
+        Intent intent=new Intent(getApplicationContext(),SaveSongActivity.class);
+        intent.putExtra("Song",song);
+        intent.putExtra("Duration",fileLength);
         startActivity(intent);
     }
 

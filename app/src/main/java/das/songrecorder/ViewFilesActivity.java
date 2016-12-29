@@ -10,12 +10,15 @@ import android.widget.ListView;
 
 public class ViewFilesActivity extends AppCompatActivity {
 
+    SongAdapter adapter;
+    SongsGetter songsGetter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_files);
 
-        SongsDBHelper dbHelper=new SongsDBHelper(getApplicationContext());
+        /*SongsDBHelper dbHelper=new SongsDBHelper(getApplicationContext());
         SQLiteDatabase db=dbHelper.getReadableDatabase();
         //db.delete(SongDBEntry.TABLE_NAME, null, null);
         String projection[]={SongDBEntry.COLUMN_NAME,SongDBEntry.COLUMN_AUTHOR,SongDBEntry.COLUMN_ARTIST,
@@ -43,12 +46,12 @@ public class ViewFilesActivity extends AppCompatActivity {
             Log.d("ViewFilesActivity",c.getString(5));
             Log.d("ViewFilesActivity",c.getInt(6)+"");
             Log.d("ViewFilesActivity",c.getString(7));
-        }
+        }*/
 
 
         ListView songList=(ListView)this.findViewById(R.id.songsList);
-        SongAdapter adapter=new SongAdapter(getApplicationContext());
-        SongsGetter songsGetter=SongsGetter.getInstance();
+        adapter=new SongAdapter(getApplicationContext());
+        songsGetter=SongsGetter.getInstance();
         adapter.addSongs(songsGetter.getSongs(getApplicationContext()));
         adapter.notifyDataSetChanged();
         songList.setAdapter(adapter);

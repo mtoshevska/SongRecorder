@@ -26,10 +26,11 @@ public class Information {
         return instance;
     }
 
-    public Song fill(File songFile,String title) {
+    public Song fill(File songFile,String title,int d) {
         Song song=new Song();
         song.setName(title);
         song.setLocation(songFile.getAbsolutePath());
+        song.setDuration(d);
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String formattedDate = df.format(c.getTime());
@@ -42,7 +43,6 @@ public class Information {
         int num=new Random().nextInt(20);
         f.setAuthor("Author"+num);
         f.setArtist("Artist"+num);
-        f.setDuration(num);
         f.setGenre("Genre"+num);
         f.setYear(2017);
         return f;

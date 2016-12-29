@@ -16,6 +16,9 @@ public class SaveSongActivity extends AppCompatActivity {
 
     File songFile=null;
     Song song=null;
+    Saver saver;
+    Information info;
+    int duration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,11 @@ public class SaveSongActivity extends AppCompatActivity {
         Bundle extras=getIntent().getExtras();
         if(extras!=null){
             songFile=(File)extras.get("Song");
+            duration=(int)extras.get("Duration");
         }
+
+        saver=Saver.getInstance();
+        info=Information.getInstance();
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +50,7 @@ public class SaveSongActivity extends AppCompatActivity {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     fillInfo(title);
-                                    saveSong(title);
+                                    saveSong();
                                     Toast.makeText(getApplicationContext(),"Song saved!", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                                 }
@@ -68,17 +75,14 @@ public class SaveSongActivity extends AppCompatActivity {
     }
 
     public void discardSong(){
-        Saver saver=Saver.getInstance();
         saver.discard(song);
     }
 
     public void fillInfo(String title){
-        Information info=Information.getInstance();
-        song=info.fill(songFile,title);
+        song=info.fill(songFile,title,duration);
     }
 
-    public void saveSong(String title){
-        Saver saver=Saver.getInstance();
+    public void saveSong(){
         saver.save(song,getApplicationContext());
     }
 }
