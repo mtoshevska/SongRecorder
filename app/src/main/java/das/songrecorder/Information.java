@@ -32,16 +32,7 @@ public class Information {
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String formattedDate = df.format(c.getTime());
         song.setDateRecorded(formattedDate);
-        return getDataFromDatabase(song);
-    }
-
-    private Song getDataFromDatabase(Song f) {
-        //fill attr with info from database
-        int num=new Random().nextInt(20);
-        f.setAuthor("Author"+num);
-        f.setArtist("Artist"+num);
-        f.setGenre("Genre"+num);
-        f.setYear(2017);
-        return f;
+        GetInfo getInfo=new GetInfoByName();
+        return getInfo.getDataFromDatabase(song);
     }
 }
