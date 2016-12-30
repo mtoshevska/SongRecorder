@@ -30,9 +30,14 @@ public class SongsGetter {
         return instance;
     }
 
-    public ArrayList<Song> getSongs(Context context){
+    private File[] getFiles(){
         File directory=new File(location);
         File files[]=directory.listFiles();
+        return files;
+    }
+
+    public ArrayList<Song> getSongs(Context context){
+        File files[]=getFiles();
         int counter=0;
         ArrayList<Song>songs=new ArrayList<Song>();
         SongsDBHelper dbHelper=new SongsDBHelper(context);

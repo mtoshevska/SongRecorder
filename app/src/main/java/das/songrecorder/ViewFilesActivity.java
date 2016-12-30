@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.ListView;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class ViewFilesActivity extends AppCompatActivity {
 
@@ -68,7 +69,8 @@ public class ViewFilesActivity extends AppCompatActivity {
         ListView songList=(ListView)this.findViewById(R.id.songsList);
         adapter=new SongAdapter(getApplicationContext());
         songsGetter=SongsGetter.getInstance();
-        adapter.addSongs(songsGetter.getSongs(getApplicationContext()));
+        ArrayList<Song>songs=songsGetter.getSongs(getApplicationContext());
+        adapter.addSongs(songs);
         adapter.notifyDataSetChanged();
         songList.setAdapter(adapter);
     }
