@@ -1,5 +1,8 @@
 package das.songrecorder;
 
+import android.app.Activity;
+import android.content.Context;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,13 +29,13 @@ public class Information {
         return instance;
     }
 
-    public Song fill(Song song,String title) {
+    public Song fill(Song song,String title,Activity activity) {
         song.setName(title);
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String formattedDate = df.format(c.getTime());
         song.setDateRecorded(formattedDate);
-        GetInfo getInfo=new GetInfoByName();
+        GetInfo getInfo=new GetInfoByName(activity);
         return getInfo.getDataFromDatabase(song);
     }
 }
