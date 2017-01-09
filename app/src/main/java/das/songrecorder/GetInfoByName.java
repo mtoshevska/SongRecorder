@@ -66,11 +66,6 @@ public class GetInfoByName implements GetInfo {
                 e.printStackTrace();
             }
             Log.d("GetInfoByName",params[0]);
-            int num=new Random().nextInt(20);
-            song.setAuthor("Author"+num);
-            song.setArtist("Artist"+num);
-            song.setGenre("Genre"+num);
-            song.setYear(2017);
 
             String connectionUrl="jdbc:jtds:sqlserver://songrecorder.database.windows.net:1433/Songs;user=dasproject@songrecorder;password=power!Tgirls;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
@@ -78,6 +73,7 @@ public class GetInfoByName implements GetInfo {
             Connection con = null;
             PreparedStatement stmt = null;
             ResultSet rs = null;
+            boolean foundInfo=true;
             try
             {
                 // Establish the connection.
@@ -92,12 +88,23 @@ public class GetInfoByName implements GetInfo {
                 Log.d("GetInfoByName","statement executed");
 
                 // Iterate through the data in the result set and display it.
-                while (rs.next()) {
+                if (rs.next()) {
                     Log.d("GetInfoByName",rs.getString("Name")+" "+rs.getString("Author")+" "+rs.getString("Artist")+" "+rs.getString("Genre")+""+rs.getInt("Year"));
-                    song.setAuthor(rs.getString("Author"));
-                    song.setArtist(rs.getString("Artist"));
+                    String author=rs.getString("Author");
+                    author=author.replaceAll(";",",");
+                    song.setAuthor(author);
+                    String artist=rs.getString("Artist");
+                    artist=artist.replaceAll(";",",");
+                    song.setArtist(artist);
                     song.setGenre(rs.getString("Genre"));
                     song.setYear(rs.getInt("Year"));
+                }
+                else {
+                    foundInfo=false;
+                    song.setArtist("unknown");
+                    song.setAuthor("unknown");
+                    song.setGenre("unknown");
+                    song.setYear(0);
                 }
             }
             // Handle any errors that may have occurred.
@@ -124,6 +131,7 @@ public class GetInfoByName implements GetInfo {
             Intent intent = new Intent();
             intent.setAction("SongFilledWithInformation");
             intent.putExtra("Song",song);
+            intent.putExtra("FoundInfo",foundInfo);
             activity.getApplicationContext().sendBroadcast(intent);
             Log.d("GetInfoByName","Broadcast sent");
             return null;

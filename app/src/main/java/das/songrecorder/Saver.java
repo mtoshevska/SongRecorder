@@ -30,8 +30,15 @@ public class Saver {
     public void save(Song song, Context context){
         String location=song.getLocation();
         File songFile=new File(location);
-        songFile.renameTo(new File(songFile.getParentFile().getAbsolutePath()+"/"+song.getName()+"-"+song.getArtist()+".3gp"));
-        song.setLocation(songFile.getParentFile().getAbsolutePath()+"/"+song.getName()+"-"+song.getArtist()+".3gp");
+        if(song.getArtist().compareTo("unknown")!=0) {
+            songFile.renameTo(new File(songFile.getParentFile().getAbsolutePath()+"/"+ song.getName()+"-"+song.getArtist()+".3gp"));
+            song.setLocation(songFile.getParentFile().getAbsolutePath()+"/"+song.getName()+"-"+song.getArtist()+".3gp");
+        }
+        else{
+            Log.d("Saver",song.getArtist());
+            songFile.renameTo(new File(songFile.getParentFile().getAbsolutePath()+"/"+song.getName()+".3gp"));
+            song.setLocation(songFile.getParentFile().getAbsolutePath()+"/"+song.getName()+".3gp");
+        }
         Log.d("Saver",songFile.getAbsolutePath());
         Log.d("Saver",song.getLocation());
         //write attrs to sqlite

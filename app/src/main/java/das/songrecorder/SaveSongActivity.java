@@ -5,7 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v7.app.AlertDialog;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.app.AlertDialog.Builder;
 
 import java.io.File;
 
@@ -27,9 +29,34 @@ public class SaveSongActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             Log.d("SaveSongActivity","Received broadcast");
             song=(Song)intent.getExtras().get("Song");
-            saveSong();
-            Toast.makeText(getApplicationContext(),"Song saved!", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+            boolean foundInfo=(boolean)intent.getExtras().get("FoundInfo");
+            if(foundInfo) {
+                saveSong();
+            }
+            else {
+                Builder builder = new Builder(SaveSongActivity.this);
+                builder.setTitle("Song with that name does not exist in database");
+                builder.setMessage("Click \"Save\" to save the song without information. Or click "+
+                        "\"Try again\" to check the name again.");
+                builder.setCancelable(false);
+                builder.setPositiveButton(
+                        "Save",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                saveSong();
+                            }
+                        });
+                builder.setNegativeButton(
+                        "Try again",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                builder.show();
+            }
         }
     };
 
@@ -54,14 +81,29 @@ public class SaveSongActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String title=songTitle.getText().toString();
                 if(title.compareTo("")!=0) {
-                    final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(SaveSongActivity.this);
-                    builder.setMessage("Save song?");
+                    final Builder builder = new Builder(SaveSongActivity.this);
+                    builder.setMessage("Clicking on \"Yes\" will save the song with its information in the device. "+
+                            "Clicking on \"No\" will discard the song.");
+                    builder.setTitle("Save song?");
                     builder.setCancelable(false);
                     builder.setPositiveButton(
                             "Yes",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    fillInfo(title);
+                                    ConnectivityManager cm=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+                                    NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                                    boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+                                    if(isConnected){
+                                        Log.d("SaveSongActivity","network connected");
+                                        fillInfo(title);
+                                    }
+                                    else {
+                                        Log.d("SaveSongActivity", "network not connected");
+                                        Toast.makeText(getApplicationContext(),"Device is not connected to internet. "+
+                                                "Internet connection is needed in order to get the info. "+
+                                                "Please connect your device to internet.", Toast.LENGTH_LONG).show();
+
+                                    }
                                     //saveSong();
                                     //Toast.makeText(getApplicationContext(),"Song saved!", Toast.LENGTH_LONG).show();
                                     //startActivity(new Intent(getApplicationContext(),HomeActivity.class));
@@ -112,5 +154,7 @@ public class SaveSongActivity extends AppCompatActivity {
 
     public void saveSong(){
         saver.save(song,getApplicationContext());
+        Toast.makeText(getApplicationContext(), "Song saved!", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
     }
 }
