@@ -32,7 +32,7 @@
         android:id="@+id/imgPaused" />
 
     <TextView
-        android:text="Paused"
+        android:text="@string/paused"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtPaused"
@@ -47,7 +47,7 @@
         android:textColor="?android:attr/textColorHint" />
 
     <Button
-        android:text="Stop / Pause"
+        android:text="@string/stop_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/stop_pause"
@@ -64,7 +64,7 @@
         android:layout_weight="0.04" />
 
     <Button
-        android:text="Continue"
+        android:text="@string/continue1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnContinue"
@@ -81,7 +81,7 @@
         android:layout_weight="0.04" />
 
     <Button
-        android:text="Start new recording"
+        android:text="@string/start_new_recording"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/startAgain"
@@ -98,7 +98,7 @@
         android:layout_weight="0.04" />
 
     <Button
-        android:text="Save"
+        android:text="@string/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/save"

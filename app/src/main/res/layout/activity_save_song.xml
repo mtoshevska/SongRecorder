@@ -15,14 +15,13 @@
     tools:context="das.songrecorder.SaveSongActivity">
 
     <TextView
-        android:text="Write Title"
+        android:text="@string/write_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:id="@+id/txtWriteTitle"
         android:textColor="@color/buttonsTextColor"
         android:background="@color/backColor"
-        android:autoText="true"
         android:textSize="18sp" />
 
     <EditText
@@ -31,10 +30,11 @@
         android:id="@+id/title"
         android:hint="@string/songTitle1"
         android:cursorVisible="true"
-        android:saveEnabled="true" />
+        android:saveEnabled="true"
+        android:inputType="textCapSentences" />
 
     <Button
-        android:text="Save"
+        android:text="@string/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnSaveSong"
@@ -48,6 +48,5 @@
         android:layout_margin="3dp"
         android:background="@color/buttonsBackColor"
         android:textColor="@color/buttonsTextColor" />
-
 
 </LinearLayout>
