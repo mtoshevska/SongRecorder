@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
-
 import java.io.File;
 import java.util.ArrayList;
 
@@ -14,13 +13,19 @@ import java.util.ArrayList;
  */
 
 public class SongsGetter {
+
     static final String location= Environment.getExternalStorageDirectory()+"/SongRecorder/";
     private static SongsGetter instance;
 
-    private SongsGetter(){
+    /**
+     * Private constructor for the class.
+     */
+    private SongsGetter(){}
 
-    }
-
+    /**
+     * Creates and returns instance if is null. Otherwise just returns it.
+     * @return unique instance of the class
+     */
     public static SongsGetter getInstance(){
         synchronized (SongsGetter.class){
             if(instance==null){

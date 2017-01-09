@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-
 import java.io.File;
 
 /**
@@ -12,12 +11,18 @@ import java.io.File;
  */
 
 public class Saver {
+
     private static Saver instance;
 
-    private Saver(){
+    /**
+     * Private constructor for the class.
+     */
+    private Saver(){}
 
-    }
-
+    /**
+     * Creates and returns instance if is null. Otherwise just returns it.
+     * @return unique instance of the class
+     */
     public static Saver getInstance(){
         synchronized (Saver.class){
             if(instance==null){

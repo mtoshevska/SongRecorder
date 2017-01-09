@@ -3,14 +3,7 @@ package das.songrecorder;
 import android.media.MediaRecorder;
 import android.os.Environment;
 import android.util.Log;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Toni on 25.11.2016.
@@ -24,10 +17,15 @@ public class Recorder {
     private int counter;
     private static Recorder instance;
 
-    private Recorder() {
+    /**
+     * Private constructor for the class.
+     */
+    private Recorder(){}
 
-    }
-
+    /**
+     * Creates and returns instance if is null. Otherwise just returns it.
+     * @return unique instance of the class
+     */
     public static Recorder getInstance(){
         synchronized (Recorder.class){
             if(instance==null){
