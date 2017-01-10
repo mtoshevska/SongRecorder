@@ -2,16 +2,13 @@ package das.songrecorder;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Random;
 
 /**
  * Created by Toni on 30.12.2016.
@@ -27,26 +24,17 @@ public class GetInfoByName implements GetInfo {
     }
 
     @Override
-    public Song getDataFromDatabase(Song f) {
+    public void getDataFromDatabase(Song f) {
         song=f;
-        /*int num=new Random().nextInt(20);
-        f.setAuthor("Author"+num);
-        f.setArtist("Artist"+num);
-        f.setGenre("Genre"+num);
-        f.setYear(2017);*/
         new GetData().execute(f.getName());
         Log.d("GetInfoByName","continued");
-        return f;
     }
 
     private class GetData extends AsyncTask<String,Void,Void>{
 
-        //private Activity activity;
         private ProgressDialog dialog;
 
-        public GetData(){
-            //activity=a;
-        }
+        public GetData(){}
 
         @Override
         protected void onPreExecute() {

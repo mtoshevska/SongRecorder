@@ -149,7 +149,7 @@ public class SaveSongActivity extends AppCompatActivity {
     }
 
     public void fillInfo(String title){
-        song=info.fill(song,title,this);
+        info.fill(song,title,this);
     }
 
     public void saveSong(){

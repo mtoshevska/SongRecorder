@@ -10,5 +10,5 @@ public interface GetInfo {
      * @param f Song that should be filled with information
      * @return Song filled with information
      */
-    Song getDataFromDatabase(Song f);
+    void getDataFromDatabase(Song f);
 }

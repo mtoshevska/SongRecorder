@@ -30,13 +30,13 @@ public class Information {
         return instance;
     }
 
-    public Song fill(Song song,String title,Activity activity) {
+    public void fill(Song song,String title,Activity activity) {
         song.setName(title);
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String formattedDate = df.format(c.getTime());
         song.setDateRecorded(formattedDate);
         GetInfo getInfo=new GetInfoByName(activity);
-        return getInfo.getDataFromDatabase(song);
+        getInfo.getDataFromDatabase(song);
     }
 }

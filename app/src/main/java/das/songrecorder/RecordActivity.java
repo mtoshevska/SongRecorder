@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -46,7 +47,9 @@ public class RecordActivity extends AppCompatActivity {
                 startAgain.setVisibility(View.GONE);
                 stop_pause.setVisibility(View.VISIBLE);
                 timer.setVisibility(View.VISIBLE);
-                timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+                long time=SystemClock.elapsedRealtime()+timeWhenStopped;
+                Log.d("RecordActivity",time+"");
+                timer.setBase(time);
                 timer.start();
                 //recorder.Continue();
             }
@@ -69,7 +72,7 @@ public class RecordActivity extends AppCompatActivity {
                 stop_pause.setVisibility(View.VISIBLE);
                 timer.setVisibility(View.VISIBLE);
                 startNewRecording();
-                timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+                timer.setBase(SystemClock.elapsedRealtime()+timeWhenStopped);
                 timer.start();
                 //recorder.Start();
             }
@@ -100,8 +103,9 @@ public class RecordActivity extends AppCompatActivity {
     }
 
     public void stop(long t){
-        timeWhenStopped=SystemClock.elapsedRealtime()-t;
-        fileLength=(int)timeWhenStopped/1000;
+        Log.d("RecordActivity",t+"");
+        timeWhenStopped=t-SystemClock.elapsedRealtime();
+        fileLength=(int)(SystemClock.elapsedRealtime()-t)/1000;
         recorder.Pause();
     }
 
