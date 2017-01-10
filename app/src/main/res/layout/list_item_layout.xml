@@ -42,6 +42,33 @@
         android:layout_below="@+id/author"
         android:layout_toEndOf="@+id/playButton" />
 
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/buttonsTextColor"
+        android:id="@+id/year"
+        android:layout_below="@+id/duration"
+        android:layout_toEndOf="@+id/playButton" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/buttonsTextColor"
+        android:id="@+id/genre"
+        android:layout_below="@+id/year"
+        android:layout_toEndOf="@+id/playButton" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/buttonsTextColor"
+        android:id="@+id/recorded"
+        android:layout_below="@+id/genre"
+        android:layout_toEndOf="@+id/playButton" />
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

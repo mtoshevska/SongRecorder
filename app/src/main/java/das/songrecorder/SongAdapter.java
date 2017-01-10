@@ -1,6 +1,9 @@
 package das.songrecorder;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -24,12 +27,14 @@ public class SongAdapter extends BaseAdapter {
 
     private ArrayList<Song> songs;
     private Context context;
+    private Activity activity;
     private Player player;
     private Saver saver;
 
-    public SongAdapter(Context c){
+    public SongAdapter(Activity a){
         super();
-        context=c;
+        context=a.getApplicationContext();
+        activity=a;
         songs=new ArrayList<Song>();
         player=Player.getInstance();
         saver=Saver.getInstance();
@@ -64,6 +69,9 @@ public class SongAdapter extends BaseAdapter {
         TextView title=(TextView)convertView.findViewById(R.id.name_artist);
         TextView author=(TextView)convertView.findViewById(R.id.author);
         TextView duration=(TextView)convertView.findViewById(R.id.duration);
+        TextView year=(TextView)convertView.findViewById(R.id.year);
+        TextView genre=(TextView)convertView.findViewById(R.id.genre);
+        TextView recorded=(TextView)convertView.findViewById(R.id.recorded);
         ImageButton playButton=(ImageButton)convertView.findViewById(R.id.playButton);
         ImageButton deleteButton=(ImageButton)convertView.findViewById(R.id.deleteButton);
         Song s=songs.get(position);
@@ -79,6 +87,18 @@ public class SongAdapter extends BaseAdapter {
         t2=TextUtils.htmlEncode(t1);
         t3=String.format(t2, s.getDuration());
         duration.setText(t3);
+        t1=context.getResources().getString(R.string.year);
+        t2=TextUtils.htmlEncode(t1);
+        t3=String.format(t2, s.getYear());
+        year.setText(t3);
+        t1=context.getResources().getString(R.string.genre);
+        t2=TextUtils.htmlEncode(t1);
+        t3=String.format(t2, s.getGenre());
+        genre.setText(t3);
+        t1=context.getResources().getString(R.string.recorded);
+        t2=TextUtils.htmlEncode(t1);
+        t3=String.format(t2, s.getDateRecorded());
+        recorded.setText(t3);
         playButton.setImageResource(R.drawable.play);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,9 +110,29 @@ public class SongAdapter extends BaseAdapter {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Song f=songs.get(position);
-                songs.remove(position);
-                Delete(f);
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                builder.setTitle("Are you sure?");
+                builder.setMessage("Are you sure you want to delete this file?");
+                builder.setCancelable(false);
+                builder.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Song f=songs.get(position);
+                                songs.remove(position);
+                                Delete(f);
+                            }
+                        });
+                builder.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                builder.show();
             }
         });
         return convertView;

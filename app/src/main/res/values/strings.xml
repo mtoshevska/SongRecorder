@@ -10,4 +10,7 @@
     <string name="stop_pause">Stop / Pause</string>
     <string name="continue1">Continue</string>
     <string name="start_new_recording">Start new recording</string>
+    <string name="year">Year: %1$d</string>
+    <string name="genre">Genre: %1$s</string>
+    <string name="recorded">Recorded on: %1$s</string>
 </resources>

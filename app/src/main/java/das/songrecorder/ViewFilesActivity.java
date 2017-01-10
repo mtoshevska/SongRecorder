@@ -67,7 +67,7 @@ public class ViewFilesActivity extends AppCompatActivity {
 
 
         ListView songList=(ListView)this.findViewById(R.id.songsList);
-        adapter=new SongAdapter(getApplicationContext());
+        adapter=new SongAdapter(this);
         songsGetter=SongsGetter.getInstance();
         ArrayList<Song>songs=songsGetter.getSongs(getApplicationContext());
         adapter.addSongs(songs);
