@@ -10,15 +10,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-/**
- * Created by Toni on 30.12.2016.
- */
-
 public class GetInfoByName implements GetInfo {
 
     protected Song song;
     protected Activity activity;
 
+    /**
+     * Constructor for class that gets information for the song which is going to be saved locally on phone.
+     * @param a
+     */
     public GetInfoByName(Activity a){
         activity=a;
     }
@@ -34,6 +34,9 @@ public class GetInfoByName implements GetInfo {
 
         private ProgressDialog dialog;
 
+        /**
+         * Constructor for the class that pulls information for the song from the database.
+         */
         public GetData(){}
 
         @Override

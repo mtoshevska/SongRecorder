@@ -4,10 +4,6 @@ import android.app.Activity;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * Created by Toni on 25.11.2016.
- */
-
 public class Information {
 
     private static Information instance;
@@ -30,6 +26,12 @@ public class Information {
         return instance;
     }
 
+    /**
+     * Method that calls other methods in order to fill the song metadata with information.
+     * @param song
+     * @param title
+     * @param activity
+     */
     public void fill(Song song,String title,Activity activity) {
         song.setName(title);
         Calendar c = Calendar.getInstance();

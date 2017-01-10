@@ -5,10 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-/**
- * Created by Toni on 27.12.2016.
- */
-
 public class SongsDBHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION=1;

@@ -6,10 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import java.io.File;
 
-/**
- * Created by Toni on 27.11.2016.
- */
-
 public class Saver {
 
     private static Saver instance;

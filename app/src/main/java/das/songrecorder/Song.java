@@ -6,10 +6,6 @@ import android.os.Parcelable;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by Toni on 26.11.2016.
- */
-
 public class Song implements Parcelable {
 
     private String name;

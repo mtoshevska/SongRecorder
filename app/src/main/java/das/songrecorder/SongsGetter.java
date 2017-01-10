@@ -8,10 +8,6 @@ import android.util.Log;
 import java.io.File;
 import java.util.ArrayList;
 
-/**
- * Created by Toni on 26.11.2016.
- */
-
 public class SongsGetter {
 
     static final String location= Environment.getExternalStorageDirectory()+"/SongRecorder/";

@@ -1,11 +1,7 @@
 package das.songrecorder;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.nfc.tech.NfcBarcode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.io.File;

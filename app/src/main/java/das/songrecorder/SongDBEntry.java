@@ -2,10 +2,6 @@ package das.songrecorder;
 
 import android.provider.BaseColumns;
 
-/**
- * Created by Toni on 27.12.2016.
- */
-
 public class SongDBEntry implements BaseColumns {
 
     public static final String TABLE_NAME = "SongRecorder_songs";

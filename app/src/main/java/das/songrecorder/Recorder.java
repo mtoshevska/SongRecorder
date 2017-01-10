@@ -5,10 +5,6 @@ import android.os.Environment;
 import android.util.Log;
 import java.util.ArrayList;
 
-/**
- * Created by Toni on 25.11.2016.
- */
-
 public class Recorder {
 
     private MediaRecorder recorder;

@@ -8,6 +8,11 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
+    /**
+     * This class is used to show the HomeScreen (Start recording, View files, Exit).
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

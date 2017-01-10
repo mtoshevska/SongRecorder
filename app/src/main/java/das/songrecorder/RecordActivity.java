@@ -17,6 +17,10 @@ import java.io.IOException;
 
 public class RecordActivity extends AppCompatActivity {
 
+    /**
+     * The class is used for interaction between user and the application in order to record the song.
+     */
+
     long timeWhenStopped;
     int fileLength;
     Recorder recorder;
@@ -102,6 +106,10 @@ public class RecordActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method used in order to stop recording the song when user clicks the button.
+     * @param t
+     */
     public void stop(long t){
         Log.d("RecordActivity",t+"");
         timeWhenStopped=t-SystemClock.elapsedRealtime();
@@ -109,6 +117,9 @@ public class RecordActivity extends AppCompatActivity {
         recorder.Pause();
     }
 
+    /**
+     * Method used to get the information for the song.
+     */
     public void fillSongInformation(){
         Song song=recorder.Stop();
         song.setDuration(fileLength);
@@ -117,6 +128,9 @@ public class RecordActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Method used to start new recording if user click it.
+     */
     public void startNewRecording(){
         timeWhenStopped=0;
         fileLength=0;

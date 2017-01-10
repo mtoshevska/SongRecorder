@@ -5,10 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import java.io.File;
 
-/**
- * Created by Toni on 23.12.2016.
- */
-
 public class Player {
 
     private static Player instance;
