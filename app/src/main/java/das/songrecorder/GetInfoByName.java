@@ -57,6 +57,7 @@ public class GetInfoByName implements GetInfo {
             PreparedStatement stmt = null;
             ResultSet rs = null;
             boolean foundInfo=true;
+            boolean databaseError=false;
             try {
                 Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
                 con = DriverManager.getConnection(connectionUrl);
@@ -84,6 +85,7 @@ public class GetInfoByName implements GetInfo {
                 }
             }
             catch(Exception e){
+                databaseError=true;
                 e.printStackTrace();
             }
             finally{
@@ -104,6 +106,7 @@ public class GetInfoByName implements GetInfo {
             intent.setAction("SongFilledWithInformation");
             intent.putExtra("Song",song);
             intent.putExtra("FoundInfo",foundInfo);
+            intent.putExtra("DatabaseError",databaseError);
             activity.getApplicationContext().sendBroadcast(intent);
             Log.d("GetInfoByName","Broadcast sent");
             return null;

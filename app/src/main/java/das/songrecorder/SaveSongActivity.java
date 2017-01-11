@@ -29,14 +29,23 @@ public class SaveSongActivity extends AppCompatActivity {
             Log.d("SaveSongActivity","Received broadcast");
             song=(Song)intent.getExtras().get("Song");
             boolean foundInfo=(boolean)intent.getExtras().get("FoundInfo");
+            boolean databaseError=(boolean)intent.getExtras().get("DatabaseError");
             if(foundInfo) {
                 saveSong();
             }
             else {
                 Builder builder = new Builder(SaveSongActivity.this);
-                builder.setTitle("Song with that name does not exist in database");
-                builder.setMessage("Click \"Save\" to save the song without information. Or click "+
-                        "\"Try again\" to check the name again.");
+                if(!databaseError) {
+                    builder.setTitle("Error trying to connect to database");
+                    builder.setMessage("Something wrong happened while trying to connect to database. "+
+                            "Click \"Save\" in order to save the song without information or click " +
+                            "\"Try again\" to try again.");
+                }
+                else {
+                    builder.setTitle("Song with that name does not exist in database");
+                    builder.setMessage("Click \"Save\" to save the song without information. Or click " +
+                            "\"Try again\" to check the name again.");
+                }
                 builder.setCancelable(false);
                 builder.setPositiveButton(
                         "Save",
