@@ -51,60 +51,42 @@ public class GetInfoByName implements GetInfo {
 
         @Override
         protected Void doInBackground(String... params) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             Log.d("GetInfoByName",params[0]);
-
             String connectionUrl="jdbc:jtds:sqlserver://songrecorder.database.windows.net:1433/Songs;user=dasproject@songrecorder;password=power!Tgirls;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-
-            // Declare the JDBC objects.
             Connection con = null;
             PreparedStatement stmt = null;
             ResultSet rs = null;
             boolean foundInfo=true;
-            try
-            {
-                // Establish the connection.
+            try {
                 Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
                 con = DriverManager.getConnection(connectionUrl);
-                Log.d("GetInfoByName","connected");
-
-                // Create and execute an SQL statement that returns some data.
-                stmt = con.prepareStatement("SELECT * FROM SongsInfo WHERE Name='"+params[0]+"'");
-                Log.d("GetInfoByName","statement created");
+                Log.d("GetInfoByName", "connected");
+                stmt = con.prepareStatement("SELECT * FROM SongsInfo WHERE Name='" + params[0] + "'");
+                Log.d("GetInfoByName", "statement created");
                 rs = stmt.executeQuery();
-                Log.d("GetInfoByName","statement executed");
-
-                // Iterate through the data in the result set and display it.
+                Log.d("GetInfoByName", "statement executed");
                 if (rs.next()) {
-                    Log.d("GetInfoByName",rs.getString("Name")+" "+rs.getString("Author")+" "+rs.getString("Artist")+" "+rs.getString("Genre")+""+rs.getInt("Year"));
-                    String author=rs.getString("Author");
-                    author=author.replaceAll(";",",");
+                    Log.d("GetInfoByName", rs.getString("Name") + " " + rs.getString("Author") + " " + rs.getString("Artist") + " " + rs.getString("Genre") + "" + rs.getInt("Year"));
+                    String author = rs.getString("Author");
+                    author = author.replaceAll(";", ",");
                     song.setAuthor(author);
-                    String artist=rs.getString("Artist");
-                    artist=artist.replaceAll(";",",");
+                    String artist = rs.getString("Artist");
+                    artist = artist.replaceAll(";", ",");
                     song.setArtist(artist);
                     song.setGenre(rs.getString("Genre"));
                     song.setYear(rs.getInt("Year"));
-                }
-                else {
-                    foundInfo=false;
+                } else {
+                    foundInfo = false;
                     song.setArtist("unknown");
                     song.setAuthor("unknown");
                     song.setGenre("unknown");
                     song.setYear(0);
                 }
             }
-            // Handle any errors that may have occurred.
-            catch(Exception e)
-            {
+            catch(Exception e){
                 e.printStackTrace();
             }
-            finally
-            {
+            finally{
                 if (rs != null) try {
                     rs.close();
                 } catch (Exception e) {
@@ -118,7 +100,6 @@ public class GetInfoByName implements GetInfo {
                 } catch (Exception e) {
                 }
             }
-
             Intent intent = new Intent();
             intent.setAction("SongFilledWithInformation");
             intent.putExtra("Song",song);

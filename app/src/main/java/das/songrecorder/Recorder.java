@@ -9,8 +9,6 @@ public class Recorder {
 
     private MediaRecorder recorder;
     private static String songName=Environment.getExternalStorageDirectory()+"/SongRecorder/song.3gp";
-    private ArrayList<String>tmpFiles;
-    private int counter;
     private static Recorder instance;
 
     /**
@@ -32,7 +30,6 @@ public class Recorder {
     }
 
     public void Start(){
-        //Continue();
         recorder=new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -41,9 +38,9 @@ public class Recorder {
         try{
             recorder.prepare();
         }
-        catch (Exception e)
-        {
+        catch (Exception e){
             Log.e("AudioRecord", "You cannot record");
+            e.printStackTrace();
         }
         recorder.start();
     }
@@ -56,27 +53,7 @@ public class Recorder {
         }
         Song song=new Song();
         song.setLocation(songName);
-        //return new File(songName);
         return song;
-    }
-
-    public void Continue(){
-        recorder=new MediaRecorder();
-        String tmpName=Environment.getExternalStorageDirectory()+"/SongRecorder/tmp"+counter+".3gp";
-        tmpFiles.add(tmpName);
-        counter++;
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        recorder.setOutputFile(tmpName);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_WB);
-        try{
-            recorder.prepare();
-        }
-        catch (Exception e)
-        {
-            Log.e("AudioRecord", "You cannot record");
-        }
-        recorder.start();
     }
 
     public void Pause(){

@@ -43,7 +43,6 @@ public class SongsGetter {
 
     public ArrayList<Song> getSongs(Context context){
         File files[]=getFiles();
-        int counter=0;
         ArrayList<Song>songs=new ArrayList<Song>();
         SongsDBHelper dbHelper=new SongsDBHelper(context);
         SQLiteDatabase db=dbHelper.getReadableDatabase();
@@ -55,26 +54,13 @@ public class SongsGetter {
         for(File f:files){
             selectionArgs[0]=f.getAbsolutePath();
             Cursor cursor=db.query(SongDBEntry.TABLE_NAME,projection,selection,selectionArgs,null,null,null);
-            if(cursor.getCount()==0) {
-                Log.d("SongsGetter",counter+"");
-                String title = f.getName();
-                String title1 = title.substring(0, title.lastIndexOf('.'));
-                String author = "Author" + counter;
-                String artist = "Artist" + counter;
-                String genre = "Genre" + counter;
-                int duration = counter * 10 + 21;
-                counter++;
-                Song song = new Song(title1,author,artist,duration,f.getAbsolutePath(),genre,2016,"27.12.2016");
-                songs.add(song);
-            }
-            else
-            {
-                cursor.moveToFirst();
-                Song song = new Song(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),
-                        cursor.getString(4),cursor.getString(5),cursor.getInt(6),cursor.getString(7));
-                songs.add(song);
-                Log.d("SongsGetter","yayyyyyyyyyy");
-            }
+            cursor.moveToFirst();
+            Song song = new Song(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),
+                    cursor.getString(4),cursor.getString(5),cursor.getInt(6),cursor.getString(7));
+            songs.add(song);
+            Log.d("SongsGetter",cursor.getString(0)+" "+cursor.getString(1)+" "+cursor.getString(2)+" "+
+                    cursor.getInt(3)+" "+cursor.getString(4)+" "+cursor.getString(5)+" "+cursor.getInt(6)+
+                    " "+cursor.getString(7));
         }
         return songs;
     }

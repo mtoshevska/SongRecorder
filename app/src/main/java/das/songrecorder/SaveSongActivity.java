@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.app.AlertDialog.Builder;
 
-import java.io.File;
 
 public class SaveSongActivity extends AppCompatActivity {
 
@@ -104,9 +103,6 @@ public class SaveSongActivity extends AppCompatActivity {
                                                 "Please connect your device to internet.", Toast.LENGTH_LONG).show();
 
                                     }
-                                    //saveSong();
-                                    //Toast.makeText(getApplicationContext(),"Song saved!", Toast.LENGTH_LONG).show();
-                                    //startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                                 }
                             });
                     builder.setNegativeButton(
@@ -120,9 +116,8 @@ public class SaveSongActivity extends AppCompatActivity {
                             });
                     builder.show();
                 }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Please type song name",Toast.LENGTH_LONG).show();
+                else {
+                    Toast.makeText(getApplicationContext(), "Please type song name", Toast.LENGTH_LONG).show();
                 }
             }
         });

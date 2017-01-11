@@ -3,9 +3,6 @@ package das.songrecorder;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
-import java.util.Locale;
-
 public class Song implements Parcelable {
 
     private String name;

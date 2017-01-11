@@ -1,7 +1,6 @@
 package das.songrecorder;
 
 import android.content.Intent;
-import android.os.Environment;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,9 +10,6 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.File;
-import java.io.IOException;
 
 public class RecordActivity extends AppCompatActivity {
 
@@ -78,7 +74,6 @@ public class RecordActivity extends AppCompatActivity {
                 startNewRecording();
                 timer.setBase(SystemClock.elapsedRealtime()+timeWhenStopped);
                 timer.start();
-                //recorder.Start();
             }
         });
 

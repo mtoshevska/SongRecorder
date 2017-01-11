@@ -42,7 +42,6 @@ public class Saver {
         }
         Log.d("Saver",songFile.getAbsolutePath());
         Log.d("Saver",song.getLocation());
-        //write attrs to sqlite
         SongsDBHelper dbHelper=new SongsDBHelper(context);
         SQLiteDatabase db=dbHelper.getWritableDatabase();
         ContentValues values=new ContentValues();
@@ -62,7 +61,6 @@ public class Saver {
         String location=song.getLocation();
         File forDelete=new File(location);
         forDelete.delete();
-        //delete from sqlite
         SongsDBHelper dbHelper=new SongsDBHelper(context);
         SQLiteDatabase db=dbHelper.getWritableDatabase();
         try {
