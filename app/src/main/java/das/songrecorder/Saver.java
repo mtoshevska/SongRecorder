@@ -3,7 +3,6 @@ package das.songrecorder;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 import java.io.File;
 
 public class Saver {
@@ -41,12 +40,9 @@ public class Saver {
             song.setLocation(songFile.getParentFile().getAbsolutePath()+"/"+song.getName()+"-"+song.getArtist()+".3gp");
         }
         else{
-            Log.d("Saver",song.getArtist());
             songFile.renameTo(new File(songFile.getParentFile().getAbsolutePath()+"/"+song.getName()+".3gp"));
             song.setLocation(songFile.getParentFile().getAbsolutePath()+"/"+song.getName()+".3gp");
         }
-        Log.d("Saver",songFile.getAbsolutePath());
-        Log.d("Saver",song.getLocation());
         SongsDBHelper dbHelper=new SongsDBHelper(context);
         SQLiteDatabase db=dbHelper.getWritableDatabase();
         ContentValues values=new ContentValues();
@@ -59,7 +55,6 @@ public class Saver {
         values.put(SongDBEntry.COLUMN_YEAR,song.getYear());
         values.put(SongDBEntry.COLUMN_DATE_RECORDED,song.getDateRecorded());
         db.insert(SongDBEntry.TABLE_NAME,null,values);
-        Log.d("Saver","Song Saved");
     }
 
     /**
@@ -77,7 +72,7 @@ public class Saver {
             db.delete(SongDBEntry.TABLE_NAME, SongDBEntry.COLUMN_LOCATION + "='" + location + "'", null);
         }
         catch (Exception e){
-            Log.d("Saver",e.getMessage());
+            e.printStackTrace();
         }
     }
 }

@@ -2,7 +2,6 @@ package das.songrecorder;
 
 import android.media.MediaRecorder;
 import android.os.Environment;
-import android.util.Log;
 
 public class Recorder {
 
@@ -41,7 +40,6 @@ public class Recorder {
             recorder.prepare();
         }
         catch (Exception e){
-            Log.e("AudioRecord", "You cannot record");
             e.printStackTrace();
         }
         recorder.start();

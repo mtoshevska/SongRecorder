@@ -3,7 +3,6 @@ package das.songrecorder;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class SongsDBHelper extends SQLiteOpenHelper {
 
@@ -34,7 +33,6 @@ public class SongsDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
-        Log.d("SongDBHelper",SongDBEntry.TABLE_NAME+" created!");
     }
 
     @Override

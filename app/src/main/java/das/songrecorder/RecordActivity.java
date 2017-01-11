@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -48,7 +47,6 @@ public class RecordActivity extends AppCompatActivity {
                 stop_pause.setVisibility(View.VISIBLE);
                 timer.setVisibility(View.VISIBLE);
                 long time=SystemClock.elapsedRealtime()+timeWhenStopped;
-                Log.d("RecordActivity",time+"");
                 timer.setBase(time);
                 timer.start();
             }
@@ -104,7 +102,6 @@ public class RecordActivity extends AppCompatActivity {
      * @param t
      */
     public void stop(long t){
-        Log.d("RecordActivity",t+"");
         timeWhenStopped=t-SystemClock.elapsedRealtime();
         fileLength=(int)(SystemClock.elapsedRealtime()-t)/1000;
         recorder.Pause();

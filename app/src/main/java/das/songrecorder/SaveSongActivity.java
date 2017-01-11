@@ -9,7 +9,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +29,6 @@ public class SaveSongActivity extends AppCompatActivity {
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d("SaveSongActivity","Received broadcast");
             song=(Song)intent.getExtras().get("Song");
             boolean foundInfo=(boolean)intent.getExtras().get("FoundInfo");
             boolean databaseError=(boolean)intent.getExtras().get("DatabaseError");
@@ -106,11 +104,9 @@ public class SaveSongActivity extends AppCompatActivity {
                                     NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
                                     boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
                                     if(isConnected){
-                                        Log.d("SaveSongActivity","network connected");
                                         fillInfo(title);
                                     }
                                     else {
-                                        Log.d("SaveSongActivity", "network not connected");
                                         Toast.makeText(getApplicationContext(),"Device is not connected to internet. "+
                                                 "Internet connection is needed in order to get the info. "+
                                                 "Please connect your device to internet.", Toast.LENGTH_LONG).show();
@@ -142,14 +138,12 @@ public class SaveSongActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction("SongFilledWithInformation");
         registerReceiver(broadcastReceiver, filter);
-        Log.d("SaveSongActivity","Broadcast registered");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         unregisterReceiver(broadcastReceiver);
-        Log.d("SaveSongActivity","Broadcast unregistered");
     }
 
     /**

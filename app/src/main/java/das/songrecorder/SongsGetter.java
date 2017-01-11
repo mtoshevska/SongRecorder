@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
-import android.util.Log;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -63,9 +62,6 @@ public class SongsGetter {
             Song song = new Song(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),
                     cursor.getString(4),cursor.getString(5),cursor.getInt(6),cursor.getString(7));
             songs.add(song);
-            Log.d("SongsGetter",cursor.getString(0)+" "+cursor.getString(1)+" "+cursor.getString(2)+" "+
-                    cursor.getInt(3)+" "+cursor.getString(4)+" "+cursor.getString(5)+" "+cursor.getInt(6)+
-                    " "+cursor.getString(7));
         }
         return songs;
     }
