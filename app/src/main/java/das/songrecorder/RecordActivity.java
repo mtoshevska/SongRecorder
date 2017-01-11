@@ -51,7 +51,6 @@ public class RecordActivity extends AppCompatActivity {
                 Log.d("RecordActivity",time+"");
                 timer.setBase(time);
                 timer.start();
-                //recorder.Continue();
             }
         });
 
@@ -96,7 +95,7 @@ public class RecordActivity extends AppCompatActivity {
                 timer.stop();
                 stop(timer.getBase());
                 timer.setVisibility(View.GONE);
-                //recorder.Pause();
+                recorder.Pause();
             }
         });
     }
