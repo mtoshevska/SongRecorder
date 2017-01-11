@@ -95,7 +95,6 @@ public class RecordActivity extends AppCompatActivity {
                 timer.stop();
                 stop(timer.getBase());
                 timer.setVisibility(View.GONE);
-                recorder.Pause();
             }
         });
     }

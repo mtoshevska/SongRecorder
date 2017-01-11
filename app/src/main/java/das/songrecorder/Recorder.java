@@ -4,9 +4,6 @@ import android.media.MediaRecorder;
 import android.os.Environment;
 import android.util.Log;
 
-import java.io.File;
-import java.util.ArrayList;
-
 public class Recorder {
 
     private MediaRecorder recorder;
