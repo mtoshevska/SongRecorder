@@ -4,6 +4,10 @@ import android.provider.BaseColumns;
 
 public class SongDBEntry implements BaseColumns {
 
+    /**
+     * Class which represents object that consists of column names from local database (the one with information saved on phone).
+     */
+
     public static final String TABLE_NAME = "SongRecorder_songs";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_AUTHOR = "author";

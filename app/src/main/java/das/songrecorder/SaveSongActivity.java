@@ -144,14 +144,24 @@ public class SaveSongActivity extends AppCompatActivity {
         Log.d("SaveSongActivity","Broadcast unregistered");
     }
 
+    /**
+     * Method for discarding song, actually not saving it.
+     */
     public void discardSong(){
         saver.discard(song,getApplicationContext());
     }
 
+    /**
+     * Method which according to the title of the song, pulls the other information.
+     * @param title
+     */
     public void fillInfo(String title){
         info.fill(song,title,this);
     }
 
+    /**
+     * Method for saving the song all together with the pulled information.
+     */
     public void saveSong(){
         saver.save(song,getApplicationContext());
         Toast.makeText(getApplicationContext(), "Song saved!", Toast.LENGTH_LONG).show();

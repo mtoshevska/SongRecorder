@@ -3,8 +3,6 @@ package das.songrecorder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
-
-import java.io.File;
 import java.util.ArrayList;
 
 public class ViewFilesActivity extends AppCompatActivity {

@@ -21,6 +21,17 @@ public class Song implements Parcelable {
 
     }
 
+    /**
+     * The constructor creates object that represents the song with the appropriate parameters.
+     * @param n
+     * @param au
+     * @param ar
+     * @param d
+     * @param l
+     * @param g
+     * @param y
+     * @param date
+     */
     public Song(String n, String au, String ar, int d, String l, String g, int y, String date){
         name=n;
         author=au;

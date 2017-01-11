@@ -133,6 +133,10 @@ public class SongAdapter extends BaseAdapter {
         player.playSong(f,context);
     }
 
+    /**
+     * Method for deleting saved song.
+     * @param f
+     */
     public void Delete(Song f){
         saver.discard(f,context);
         this.notifyDataSetChanged();

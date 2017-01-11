@@ -31,6 +31,10 @@ public class SongsGetter {
         return instance;
     }
 
+    /**
+     * Method for getting the list of all songs saved locally on phone.
+     * @return
+     */
     private File[] getFiles(){
         File directory=new File(location);
         File files[]=directory.listFiles();
