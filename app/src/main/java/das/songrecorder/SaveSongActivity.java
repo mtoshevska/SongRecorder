@@ -19,6 +19,10 @@ import android.app.AlertDialog.Builder;
 
 public class SaveSongActivity extends AppCompatActivity {
 
+    /**
+     * The class is used for interaction between user and the application in order to save the recorded song.
+     */
+
     Song song=null;
     Saver saver;
     Information info;

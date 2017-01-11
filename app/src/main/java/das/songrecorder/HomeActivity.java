@@ -10,7 +10,6 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * This class is used to show the HomeScreen (Start recording, View files, Exit).
-     * @param savedInstanceState
      */
 
     @Override

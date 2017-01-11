@@ -32,8 +32,8 @@ public class SongsGetter {
     }
 
     /**
-     * Method for getting the list of all songs saved locally on phone.
-     * @return
+     * Method for getting the list of all song files saved locally on phone.
+     * @return List of audio files
      */
     private File[] getFiles(){
         File directory=new File(location);
@@ -41,6 +41,11 @@ public class SongsGetter {
         return files;
     }
 
+    /**
+     * Method for getting the list of all songs saved locally on phone.
+     * @param context
+     * @return List of Songs
+     */
     public ArrayList<Song> getSongs(Context context){
         File files[]=getFiles();
         ArrayList<Song>songs=new ArrayList<Song>();

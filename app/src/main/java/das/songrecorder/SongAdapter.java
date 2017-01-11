@@ -22,6 +22,10 @@ public class SongAdapter extends BaseAdapter {
     private Player player;
     private Saver saver;
 
+    /**
+     * Constructor for the class
+     * @param a
+     */
     public SongAdapter(Activity a){
         super();
         context=a.getApplicationContext();
@@ -31,6 +35,10 @@ public class SongAdapter extends BaseAdapter {
         saver=Saver.getInstance();
     }
 
+    /**
+     * Sets the songs to be displayed to the user.
+     * @param s
+     */
     public void addSongs(ArrayList<Song>s){
         songs.addAll(s);
     }
@@ -129,6 +137,10 @@ public class SongAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * Method playing song.
+     * @param f
+     */
     public void Play(File f){
         player.playSong(f,context);
     }

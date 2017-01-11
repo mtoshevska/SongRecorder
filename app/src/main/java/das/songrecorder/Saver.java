@@ -28,6 +28,11 @@ public class Saver {
         return instance;
     }
 
+    /**
+     * Saves the song with its information locally on the device.
+     * @param song
+     * @param context
+     */
     public void save(Song song, Context context){
         String location=song.getLocation();
         File songFile=new File(location);
@@ -57,6 +62,11 @@ public class Saver {
         Log.d("Saver","Song Saved");
     }
 
+    /**
+     * Deletes song from the device.
+     * @param song
+     * @param context
+     */
     public void discard(Song song,Context context){
         String location=song.getLocation();
         File forDelete=new File(location);

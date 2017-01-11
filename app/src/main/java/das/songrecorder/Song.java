@@ -63,66 +63,130 @@ public class Song implements Parcelable {
         }
     };
 
+    /**
+     * Sets the name of the song.
+     * @param n
+     */
     public void setName(String n){
         name=n;
     }
 
+    /**
+     * Sets the location of the song.
+     * @param l
+     */
     public void setLocation(String l){
         location=l;
     }
 
+    /**
+     * Sets the date when the song is recorded.
+     * @param d
+     */
     public void setDateRecorded(String d){
         dateRecorded=d;
     }
 
+    /**
+     * Sets the author of the song.
+     * @param a
+     */
     public void setAuthor(String a){
         author=a;
     }
 
+    /**
+     * Sets the artist of the song.
+     * @param a
+     */
     public void setArtist(String a){
         artist=a;
     }
 
+    /**
+     * Sets the duration of the song.
+     * @param d
+     */
     public void setDuration(int d){
         duration=d;
     }
 
+    /**
+     * Sets the genre of the song.
+     * @param g
+     */
     public void setGenre(String g){
         genre=g;
     }
 
+    /**
+     * Sets the year when the song is published.
+     * @param y
+     */
     public void setYear(int y){
         year=y;
     }
 
+    /**
+     *
+     * @return The name of the song.
+     */
     public String getName(){
         return name;
     }
 
+    /**
+     *
+     * @return The  of the song.
+     */
     public String getAuthor(){
         return author;
     }
 
+    /**
+     *
+     * @return The artist of the song.
+     */
     public String getArtist(){
         return artist;
     }
 
+    /**
+     *
+     * @return The duration of the song.
+     */
     public int getDuration(){
         return duration;
     }
 
+    /**
+     *
+     * @return The location of the song.
+     */
     public String getLocation(){
         return location;
     }
 
+    /**
+     *
+     * @return The genre of the song.
+     */
     public String getGenre(){
         return genre;
     }
 
+    /**
+     *
+     * @return The year when the song is published.
+     */
     public int getYear(){
         return year;
     }
 
+    /**
+     * The date when the song is recorded.
+     * @return
+     */
     public String getDateRecorded(){
         return dateRecorded;
     }

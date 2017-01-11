@@ -28,6 +28,9 @@ public class Recorder {
         return instance;
     }
 
+    /**
+     * Starts recording the song.
+     */
     public void Start(){
         recorder=new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -44,6 +47,10 @@ public class Recorder {
         recorder.start();
     }
 
+    /**
+     * Stops recording the song.
+     * @return Recorded song
+     */
     public Song Stop() {
         if(recorder!=null) {
             recorder.stop();
@@ -55,6 +62,9 @@ public class Recorder {
         return song;
     }
 
+    /**
+     * Pauses recording the song.
+     */
     public void Pause(){
         if(recorder!=null) {
             recorder.stop();

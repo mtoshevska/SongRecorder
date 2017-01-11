@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 public class ViewFilesActivity extends AppCompatActivity {
 
+    /**
+     * The class is used for interaction between user and the application in order to view the recorded songs.
+     */
+
     SongAdapter adapter;
     SongsGetter songsGetter;
 
