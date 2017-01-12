@@ -36,6 +36,9 @@ public class SongsGetter {
      */
     private File[] getFiles(){
         File directory=new File(location);
+        if(!directory.exists()){
+            directory.mkdirs();
+        }
         File files[]=directory.listFiles();
         return files;
     }
