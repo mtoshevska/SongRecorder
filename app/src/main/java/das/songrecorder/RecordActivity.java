@@ -1,5 +1,7 @@
 package das.songrecorder;
 
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -61,16 +63,36 @@ public class RecordActivity extends AppCompatActivity {
         startAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnContinue.setVisibility(View.GONE);
-                btnSave.setVisibility(View.GONE);
-                pausedText.setVisibility(View.GONE);
-                imgPaused.setVisibility(View.GONE);
-                startAgain.setVisibility(View.GONE);
-                stop_pause.setVisibility(View.VISIBLE);
-                timer.setVisibility(View.VISIBLE);
-                startNewRecording();
-                timer.setBase(SystemClock.elapsedRealtime()+timeWhenStopped);
-                timer.start();
+                Builder builder = new Builder(RecordActivity.this);
+                builder.setCancelable(false);
+                builder.setTitle("Start new recording?");
+                builder.setMessage("Discard current recording and start new one?");
+                builder.setPositiveButton(
+                        "Yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                btnContinue.setVisibility(View.GONE);
+                                btnSave.setVisibility(View.GONE);
+                                pausedText.setVisibility(View.GONE);
+                                imgPaused.setVisibility(View.GONE);
+                                startAgain.setVisibility(View.GONE);
+                                stop_pause.setVisibility(View.VISIBLE);
+                                timer.setVisibility(View.VISIBLE);
+                                startNewRecording();
+                                timer.setBase(SystemClock.elapsedRealtime()+timeWhenStopped);
+                                timer.start();
+                            }
+                        });
+                builder.setNegativeButton(
+                        "No",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                builder.show();
             }
         });
 
