@@ -17,4 +17,18 @@ Main steps:
 
 ##2. Guide
 ###2.1 Home Screen
-<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/1.png?raw=true" alt="Home Screen" height="500px"/>
+<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/1.png?raw=true" alt="Home Screen" height="500px"/> <br />
+
+<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/2.png?raw=true" alt="Recording" height="500px"/> <br />
+
+<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/3.png?raw=true" alt="Paused" height="500px"/> <br />
+
+<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/4.png?raw=true" alt="Writing title" height="500px"/> <br />
+
+<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/5.png?raw=true" alt="Saving song" height="500px"/> <br />
+
+<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/6.png?raw=true" alt="Try again" height="500px"/> <br />
+
+<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/7.png?raw=true" alt="View files" height="500px"/> <br />
+
+<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/8.png?raw=true" alt="Pullin information" height="500px"/> <br />
