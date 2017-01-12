@@ -17,4 +17,4 @@ Main steps:
 
 ##2. Guide
 ###2.1 Home Screen
-<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/1.png?raw=true" alt="Home Screen" height="550px"/>
+<img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/1.png?raw=true" alt="Home Screen" height="500px"/>
