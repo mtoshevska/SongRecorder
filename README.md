@@ -7,7 +7,6 @@
 Our mobile application SongRecorder is a music application used for fun intended for anyone who likes music. Users can record music, record themselves singing or record anything else, get songs information and play their saved music files. <br />
 
 ##2. Guide
-###2.1 Home Screen
 Right after starting the application, the Home Screen is shown. This is the main screen in the application because here the user can see the main functionalities of the application and respectively choose one option. The first possible option is to `Start recording`. Another one is to `View files` which are already recorded and saved on the phone. Last one is, of course, to `Exit` the application. <br />
 <img src="https://github.com/mtoshevska/SongRecorder/blob/master/Screenshots/1.png?raw=true" alt="Home Screen" height="500px"/> <br />
 Once the user clicks the button `Start recording`, this music application connects to the microphone of the phone (previously when application is being installed user must allow its usage) and this is how it records the sound. Now, once it has started recording, the user only one option - to `Stop\Pause` the recording. The timer is on as the recording is happening. <br />
